@@ -1,3 +1,3 @@
 ## subscriptions manager
 
-__work in progress__
+_work in progress_
