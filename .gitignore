@@ -1,0 +1,13 @@
+src/manager/settings/local.py
+local.py
+local.*
+
+db.sqlite3
+env/
+
+__pycache__/
+.idea/
+
+*.pyc
+*.key
+*.py[cod]
