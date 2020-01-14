@@ -8,6 +8,8 @@ env/
 __pycache__/
 .idea/
 
+jupyter_notebooks/
+
 *.pyc
 *.key
 *.py[cod]
