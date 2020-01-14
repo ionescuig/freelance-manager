@@ -39,6 +39,7 @@ INSTALLED_APPS = [
 
     # local apps
     'customers.apps.CustomersConfig',
+    'passwords.apps.PasswordsConfig',
 ]
 
 MIDDLEWARE = [
