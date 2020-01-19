@@ -10,7 +10,7 @@ class Customer(models.Model):
     email   = models.EmailField()
     phone   = models.CharField(
         validators=[RegexValidator(regex='^0\d{10}$', message='Please use a valid phone number', code='nomatch')],
-        max_length=11)                                              # maybe regex='^0[0-9]{10}$'
+        max_length=11)
 
     # additional data
     town = models.CharField(max_length=20, default='Plymouth')
@@ -28,12 +28,11 @@ class Customer(models.Model):
         max_length=8, blank=True)
     iban            = models.CharField(
         validators=[RegexValidator(regex='^[0-9A-Z]{15,32}$', message='Invalid IBAN. Please use CAPITAL LETTERS.', code='nomatch')],
-        max_length=32, blank=True)   # add regex
-    # card_no         = models.IntegerField(max_length=16)          # add regex
+        max_length=32, blank=True)
     card_no         = models.CharField(
         validators=[RegexValidator(regex='^\d{16}$', message='Invalid card number', code='nomatch')],
         max_length=16, blank=True)
-    card_exp_date   = models.DateField(blank=True, null=True)       # add min=today
+    card_exp_date   = models.DateField(blank=True, null=True)
 
     # obs
     notes = models.TextField(blank=True, null=True)
@@ -42,6 +41,6 @@ class Customer(models.Model):
         return self.name
 
     def clean(self):
-        if self.card_exp_date < date.today():
-            # raise ValidationError({"card_exp_date": "Card expired or wrong date"})
-            raise ValidationError({"card_exp_date": ValidationError("Card expired or wrong date")})
+        if self.card_exp_date:
+            if self.card_exp_date < date.today():
+                raise ValidationError({"card_exp_date": ValidationError("Card expired or wrong date")})
