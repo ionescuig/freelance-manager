@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     # local apps
     'customers.apps.CustomersConfig',
     'passwords.apps.PasswordsConfig',
+    'subscriptions.apps.SubscriptionsConfig',
 ]
 
 MIDDLEWARE = [
