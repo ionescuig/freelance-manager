@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'passwords.apps.PasswordsConfig',
     'projects.apps.ProjectsConfig',
     'subscriptions.apps.SubscriptionsConfig',
+    'websites.apps.WebsitesConfig',
 ]
 
 MIDDLEWARE = [
