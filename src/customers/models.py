@@ -36,7 +36,7 @@ class Customer(models.Model):
     card_exp_date   = models.DateField(blank=True, null=True)       # add min=today
 
     # obs
-    obs = models.TextField(blank=True, null=True)
+    notes = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return self.name
