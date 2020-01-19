@@ -3,8 +3,8 @@ from django.core.exceptions import ValidationError
 from django.core.validators import RegexValidator
 from django.db import models
 
-from customers.models import Customer
 from passwords.models import Password
+from projects.models import Project
 
 
 websites = [
@@ -21,7 +21,7 @@ def date_renewal_default():
 
 
 class Subscription(models.Model):
-    customer     = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    project      = models.ForeignKey(Project, on_delete=models.CASCADE)
     password     = models.OneToOneField(Password, on_delete=models.CASCADE)
 
     website      = models.CharField(choices=websites, default='GitHub', max_length=25)
@@ -31,7 +31,7 @@ class Subscription(models.Model):
     notes        = models.TextField(blank=True, null=True)
 
     def __str__(self):
-        return self.customer.name + ' - ' + self.website
+        return self.project.name + ' - ' + self.website
 
     def clean(self):
         if self.date_renewal < date.today():

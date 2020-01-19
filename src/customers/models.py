@@ -38,7 +38,10 @@ class Customer(models.Model):
     notes = models.TextField(blank=True, null=True)
 
     def __str__(self):
-        return self.name
+        if self.company:
+            return self.company + ' (' + self.name + ')'
+        else:
+            return self.name
 
     def clean(self):
         if self.card_exp_date:
