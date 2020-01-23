@@ -1,6 +1,5 @@
 from datetime import date, timedelta
 from django.core.exceptions import ValidationError
-from django.core.validators import RegexValidator
 from django.db import models
 
 from passwords.models import Password

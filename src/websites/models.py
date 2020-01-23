@@ -1,6 +1,3 @@
-from datetime import date, timedelta
-from django.core.exceptions import ValidationError
-from django.core.validators import RegexValidator
 from django.db import models
 
 from passwords.models import Password
@@ -8,8 +5,8 @@ from projects.models import Project
 
 
 class Website(models.Model):
-    project      = models.ForeignKey(Project, on_delete=models.CASCADE)
-    password     = models.OneToOneField(Password, on_delete=models.CASCADE)
+    project    = models.ForeignKey(Project, on_delete=models.CASCADE)
+    password   = models.OneToOneField(Password, on_delete=models.CASCADE)
 
     url        = models.URLField(blank=True, null=True)
     url_github = models.URLField(blank=True, null=True)
