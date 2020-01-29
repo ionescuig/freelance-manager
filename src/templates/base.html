@@ -17,7 +17,6 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{% static 'css/nav.css' %}">
     <link rel="stylesheet" href="{% static 'css/danger-top.css' %}">
-    <link rel="stylesheet" href="{% static 'css/warning-top.css' %}">
 
     <!-- Extra settings -->
     {% block head %}{% endblock %}
@@ -34,7 +33,7 @@
             <div class="col-md-8 mx-auto">
                 {% include 'snippets/nav.html' %}
                 {% include 'snippets/danger-top.html' %}
-                {% include 'snippets/warning-top.html' %}
+                {% block body-top %}{% endblock %}
 
                 {% block body %}
                     <h1>Freelance Manager</h1>
