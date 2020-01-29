@@ -1,0 +1,17 @@
+.warning-top {
+    margin-top: -0.8rem;
+    background-color: #E0A800;
+    border-radius: 0.5em;
+
+    color: #ecf0f1;
+    font-size: 0.8rem;
+}
+
+.warning-top a {
+    color: #ecf0f1;
+    font-weight: bold;
+}
+
+.warning-top a:hover {
+    color: yellow;
+}
