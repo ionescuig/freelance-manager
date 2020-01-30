@@ -10,12 +10,17 @@ from .models import Customer
 class CustomerCreateView(LoginRequiredMixin, CreateView):
     template_name = 'customers/create.html'
     form_class = CustomerForm
-    # success_url = reverse_lazy('home')
 
 
 class CustomerDetailView(LoginRequiredMixin, DetailView):
     template_name = 'customers/detail.html'
     model = Customer
+
+
+class CustomerUpdateView(LoginRequiredMixin, UpdateView):
+    template_name = 'customers/update.html'
+    form_class = CustomerForm
+    queryset = Customer.objects.all()
 
 
 class CustomerListView(LoginRequiredMixin, ListView):

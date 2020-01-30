@@ -7,7 +7,16 @@
 
 {% block body %}
     <div class="text-center">
-        <h1>Update Customer</h1>
-        <h4>Not set yet</h4>
+        <div>
+            <h1>Customer Update Page</h1>
+            <h4 style="color: red">Not finished</h4>
+            <hr>
+        </div>
+
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Update">
+        </form>
     </div>
 {% endblock body %}

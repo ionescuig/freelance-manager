@@ -13,6 +13,7 @@
             <hr>
         </div>
         <h2>{{ customer }}</h2>
+        <a href="{% url 'customers:update' pk=customer.pk %}">Update</a> |
         <a href="{% url 'customers:delete' pk=customer.pk %}">Delete</a>
         <br>
     </div>
