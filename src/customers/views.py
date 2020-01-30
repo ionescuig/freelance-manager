@@ -7,7 +7,12 @@ from .forms import CustomerForm
 from .models import Customer
 
 
-class CreateCustomerView(LoginRequiredMixin, CreateView):
-    template_name = "customers/create.html"
+class CustomerCreateView(LoginRequiredMixin, CreateView):
+    template_name = 'customers/create.html'
     form_class = CustomerForm
-    success_url = reverse_lazy('home')
+    # success_url = reverse_lazy('home')
+
+
+class CustomerDetailView(LoginRequiredMixin, DetailView):
+    template_name = 'customers/detail.html'
+    model = Customer
