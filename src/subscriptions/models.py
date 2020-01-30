@@ -1,8 +1,8 @@
 from datetime import date, timedelta
 from django.core.exceptions import ValidationError
 from django.db import models
+from django.urls import reverse
 
-from passwords.models import Password
 from projects.models import Project
 
 
@@ -21,9 +21,11 @@ def date_renewal_default():
 
 class Subscription(models.Model):
     project      = models.ForeignKey(Project, on_delete=models.CASCADE)
-    password     = models.OneToOneField(Password, on_delete=models.CASCADE)
 
     website      = models.CharField(choices=websites, default='GitHub', max_length=25)
+    username     = models.CharField(max_length=25)
+    password     = models.CharField(max_length=50)
+
     date_created = models.DateField(blank=True, null=True)
     date_renewal = models.DateField(blank=True, null=True, default=date_renewal_default)
 
@@ -39,3 +41,12 @@ class Subscription(models.Model):
             if self.date_created:
                 if self.date_renewal <= self.date_created:
                     raise ValidationError({"date_renewal": ValidationError("Renewal date must be after created date.")})
+
+    def get_absolute_url(self):
+        return reverse('subscriptions:detail', kwargs={'pk': self.pk})
+
+    def get_fields(self):
+        return [(field.verbose_name, field.value_from_object(self)) for field in self.__class__._meta.fields]
+
+    class Meta:
+        ordering = ['project', 'website']
