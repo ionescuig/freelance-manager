@@ -1,3 +1,4 @@
+from datetime import date, timedelta
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView
 from itertools import chain
@@ -12,12 +13,8 @@ class HomePageView(LoginRequiredMixin, ListView):
     template_name = 'home.html'
 
     def get_queryset(self):
-        customers = Customer.objects.all()
-        projects = Project.objects.all()
-        subscriptions = Subscription.objects.all()
-        websites = Website.objects.all()
-        dashboard = list(chain(customers, projects, subscriptions, websites))
-        return dashboard
+        warning = date.today() + timedelta(days=30)
+        return Subscription.objects.filter(date_renewal__lte=warning)
 
     def get_context_data(self, **kwargs):
         context = super(HomePageView, self).get_context_data()
