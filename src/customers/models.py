@@ -2,6 +2,7 @@ from datetime import date
 from django.core.exceptions import ValidationError
 from django.core.validators import RegexValidator
 from django.db import models
+from django.urls import reverse
 
 
 class Customer(models.Model):
@@ -47,3 +48,9 @@ class Customer(models.Model):
         if self.card_exp_date:
             if self.card_exp_date < date.today():
                 raise ValidationError({"card_exp_date": ValidationError("Card expired or wrong date")})
+
+    def get_absolute_url(self):
+        return reverse('customers:detail', kwargs={'pk': self.pk})
+
+    class Meta:
+        ordering = ['company', 'name']
