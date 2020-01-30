@@ -7,7 +7,18 @@
 
 {% block body %}
     <div class="text-center">
-        <h1>Delete Customer</h1>
-        <h4>Not set yet</h4>
+        <div>
+            <h1>Delete Customer</h1>
+            <h4 style="color: red">Not finished</h4>
+            <hr>
+        </div>
+    </div>
+    <div>
+        Are you sure you want to delete {{ customer }}
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Delete">
+        </form>
     </div>
 {% endblock body %}

@@ -21,3 +21,9 @@ class CustomerDetailView(LoginRequiredMixin, DetailView):
 class CustomerListView(LoginRequiredMixin, ListView):
     template_name = 'customers/list.html'
     model = Customer
+
+
+class CustomerDeleteView(LoginRequiredMixin, DeleteView):
+    template_name = 'customers/delete.html'
+    model = Customer
+    success_url = reverse_lazy('customers:list')
