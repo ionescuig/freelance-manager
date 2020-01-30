@@ -1,6 +1,5 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import CreateView, DeleteView, DetailView, ListView, UpdateView
-from django.shortcuts import render
 from django.urls import reverse_lazy
 
 from .forms import CustomerForm

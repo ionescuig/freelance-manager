@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    FM | Project details
+{% endblock title %}
+
+{% block body %}
+    <div class="text-center">
+        <div>
+            <h1>Project detail page</h1>
+            <h4 style="color: red">Not finished</h4>
+            <hr>
+        </div>
+        <h2>{{ project }}</h2>
+        <a href="{% url 'projects:update' pk=project.pk %}">Update</a> |
+        <a href="{% url 'projects:delete' pk=project.pk %}">Delete</a>
+        <br>
+    </div>
+
+    <div>
+        {% for label, value in object.get_fields %}
+            <p>
+                <label>{{ label }}:</label>
+                <span>{{ value|default:"-" }}</span>
+            </p>
+        {% endfor %}
+    </div>
+{% endblock body %}

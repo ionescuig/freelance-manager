@@ -14,7 +14,7 @@
                 <a class="nav-link" href="{% url 'customers:list' %}">Customers</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Projects</a>
+                <a class="nav-link" href="{% url 'projects:list' %}">Projects</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Subscriptions</a>
@@ -30,7 +30,7 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item" href="{% url 'customers:create' %}">New Customer</a>
-                    <a class="dropdown-item" href="#">New Project</a>
+                    <a class="dropdown-item" href="{% url 'projects:create' %}">New Project</a>
                     <a class="dropdown-item" href="#">New Subscription</a>
                     <a class="dropdown-item" href="#">New Website</a>
                 </div>
