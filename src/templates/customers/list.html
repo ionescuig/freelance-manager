@@ -10,4 +10,12 @@
         <h1>Customers</h1>
         <h4>Not set yet</h4>
     </div>
+
+    <div>
+    {% for customer in object_list %}
+        <p>
+            <a href="{% url 'customers:detail' pk=customer.pk %}">{{ customer }}</a></p>
+    {% endfor %}
+
+    </div>
 {% endblock body %}

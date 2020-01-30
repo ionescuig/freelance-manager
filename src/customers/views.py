@@ -16,3 +16,8 @@ class CustomerCreateView(LoginRequiredMixin, CreateView):
 class CustomerDetailView(LoginRequiredMixin, DetailView):
     template_name = 'customers/detail.html'
     model = Customer
+
+
+class CustomerListView(LoginRequiredMixin, ListView):
+    template_name = 'customers/list.html'
+    model = Customer
