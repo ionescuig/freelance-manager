@@ -8,6 +8,11 @@
 {% block body %}
     <div class="container offset-md-4 col-md-4 text-center">
         <h1>Please login</h1>
+        <div>
+            User: user
+            <br>Password: password
+            <br><small style="color: red"><em>Credentials not ready yet.</em></small>
+        </div>
         <br>
         <form method="POST">
             {% csrf_token %}
