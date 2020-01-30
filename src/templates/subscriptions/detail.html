@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    FM | Subscription details
+{% endblock title %}
+
+{% block body %}
+    <div class="text-center">
+        <div>
+            <h1>Subscription detail page</h1>
+            <h4 style="color: red">Not finished</h4>
+            <hr>
+        </div>
+        <h2>{{ subscription }}</h2>
+        <a href="{% url 'subscriptions:update' pk=subscription.pk %}">Update</a> |
+        <a href="{% url 'subscriptions:delete' pk=subscription.pk %}">Delete</a>
+        <br>
+    </div>
+
+    <div>
+        {% for label, value in object.get_fields %}
+            <p>
+                <label>{{ label }}:</label>
+                <span>{{ value|default:"-" }}</span>
+            </p>
+        {% endfor %}
+    </div>
+{% endblock body %}
