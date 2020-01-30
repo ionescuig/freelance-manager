@@ -15,7 +15,16 @@
 
 {% block body %}
     <div class="text-center">
-        <h1>Freelance Manager</h1>
-        <h2>Home Page</h2>
+        <div>
+            <h1>Dashboard</h1>
+            <h4 style="color: red">Not finished</h4>
+            <hr>
+        </div>
+    </div>
+    <div>
+        <p><a href="{% url 'customers:list' %}">Customers: {{ customers.count }}</a></p>
+        <p><a href="{% url 'projects:list' %}">Projects: {{ projects.count }}</a></p>
+        <p><a href="#">Subscriptions: {{ subscriptions.count }}</a></p>
+        <p><a href="#">Websites: {{ websites.count }}</a></p>
     </div>
 {% endblock body %}
