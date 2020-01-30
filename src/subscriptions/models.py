@@ -33,8 +33,9 @@ class Subscription(models.Model):
         return self.project.name + ' - ' + self.website
 
     def clean(self):
-        if self.date_renewal < date.today():
-            raise ValidationError({"date_renewal": ValidationError("Renewal date cannot be in the past.")})
-        if self.date_created:
-            if self.date_renewal <= self.date_created:
-                raise ValidationError({"date_renewal": ValidationError("Renewal date must be after created date.")})
+        if self.date_renewal:
+            if self.date_renewal < date.today():
+                raise ValidationError({"date_renewal": ValidationError("Renewal date cannot be in the past.")})
+            if self.date_created:
+                if self.date_renewal <= self.date_created:
+                    raise ValidationError({"date_renewal": ValidationError("Renewal date must be after created date.")})
