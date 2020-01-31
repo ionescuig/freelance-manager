@@ -1,6 +1,7 @@
 src/manager/settings/local.py
 local.py
 local.*
+populate_db.py
 
 db.sqlite3
 env/
