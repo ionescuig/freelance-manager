@@ -23,8 +23,6 @@ class Subscription(models.Model):
     project      = models.ForeignKey(Project, on_delete=models.CASCADE)
 
     website      = models.CharField(choices=websites, default='GitHub', max_length=25)
-    username     = models.CharField(max_length=25)
-    password     = models.CharField(max_length=50)
 
     date_created = models.DateField(blank=True, null=True)
     date_renewal = models.DateField(blank=True, null=True, default=date_renewal_default)
