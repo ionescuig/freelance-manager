@@ -14,7 +14,8 @@
         </div>
     </div>
     <div>
-        Are you sure you want to delete {{ customer }}
+        <strong>Are you sure you want to delete {{ customer }}?</strong>
+        <br>This action will delete all projects, subscriptions and passwords connected to this user!
         <form method="POST">
             {% csrf_token %}
             {{ form.as_p }}
