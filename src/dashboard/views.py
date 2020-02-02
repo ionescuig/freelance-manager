@@ -6,7 +6,7 @@ from itertools import chain
 from customers.models import Customer
 from projects.models import Project
 from subscriptions.models import Subscription
-from websites.models import Website
+from passwords.models import Password
 
 
 class HomePageView(LoginRequiredMixin, ListView):
@@ -21,9 +21,9 @@ class HomePageView(LoginRequiredMixin, ListView):
         customers = Customer.objects.all()
         projects = Project.objects.all()
         subscriptions = Subscription.objects.all()
-        websites = Website.objects.all()
+        passwords = Password.objects.all()
         context['customers'] = customers
         context['projects'] = projects
         context['subscriptions'] = subscriptions
-        context['websites'] = websites
+        context['passwords'] = passwords
         return context

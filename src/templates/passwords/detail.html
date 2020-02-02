@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    FM | Password details
+{% endblock title %}
+
+{% block body %}
+    <div class="text-center">
+        <div>
+            <h1>Password detail page</h1>
+            <h4 style="color: red">Not finished</h4>
+            <hr>
+        </div>
+        <h2>{{ website }}</h2>
+        <a href="{% url 'passwords:update' pk=password.pk %}">Update</a> |
+        <a href="{% url 'passwords:delete' pk=password.pk %}">Delete</a>
+        <br>
+    </div>
+
+    <div>
+        {% for label, value in object.get_fields %}
+            <p>
+                <label>{{ label }}:</label>
+                <span>{{ value|default:"-" }}</span>
+            </p>
+        {% endfor %}
+    </div>
+{% endblock body %}

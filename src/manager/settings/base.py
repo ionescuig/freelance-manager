@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     # local apps
     'customers.apps.CustomersConfig',
     'dashboard.apps.DashboardConfig',
+    'passwords.apps.PasswordsConfig',
     'projects.apps.ProjectsConfig',
     'subscriptions.apps.SubscriptionsConfig',
     'websites.apps.WebsitesConfig',
