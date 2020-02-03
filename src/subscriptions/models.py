@@ -4,15 +4,7 @@ from django.db import models
 from django.urls import reverse
 
 from projects.models import Project
-
-
-websites = [
-    ('123reg', '123Reg'),
-    ('Heroku', 'Heroku'),
-    ('GitHub', 'GitHub'),
-    ('DigitalOcean', 'DigitalOcean'),
-    ('Other', 'Other')
-]
+from websites.models import Website
 
 
 def date_renewal_default():
@@ -21,8 +13,7 @@ def date_renewal_default():
 
 class Subscription(models.Model):
     project      = models.ForeignKey(Project, on_delete=models.CASCADE)
-
-    website      = models.CharField(choices=websites, default='GitHub', max_length=25)
+    website      = models.ForeignKey(Website, on_delete=models.CASCADE)
 
     date_created = models.DateField(blank=True, null=True)
     date_renewal = models.DateField(blank=True, null=True, default=date_renewal_default)
@@ -30,7 +21,7 @@ class Subscription(models.Model):
     notes        = models.TextField(blank=True, null=True)
 
     def __str__(self):
-        return self.project.name + ' - ' + self.website
+        return self.project.name + ' - ' + self.website.name
 
     def clean(self):
         if self.date_renewal:
