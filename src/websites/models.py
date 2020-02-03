@@ -3,10 +3,8 @@ from django.urls import reverse
 
 
 class Website(models.Model):
-    name         = models.CharField(max_length=25, unique=True)
-    url         = models.URLField(unique=True)
-    subscription = models.BooleanField(default=True, blank=True, null=True)
-    password     = models.BooleanField(default=True, blank=True, null=True)
+    name = models.CharField(max_length=25, unique=True)
+    url  = models.URLField(unique=True)
 
     def __str__(self):
         return self.name
