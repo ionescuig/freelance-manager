@@ -26,5 +26,6 @@
         <p><a href="{% url 'projects:list' %}">Projects: {{ projects.count }}</a></p>
         <p><a href="{% url 'subscriptions:list' %}">Subscriptions: {{ subscriptions.count }}</a></p>
         <p><a href="{% url 'passwords:list' %}">Passwords: {{ passwords.count }}</a></p>
+        <p><a href="{% url 'websites:list' %}">Websites: {{ websites.count }}</a></p>
     </div>
 {% endblock body %}

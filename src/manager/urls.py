@@ -30,4 +30,5 @@ urlpatterns = [
     path('projects/', include(('projects.urls', 'projects'), namespace='projects')),
     path('subscriptions/', include(('subscriptions.urls', 'subscriptions'), namespace='subscriptions')),
     path('passwords/', include(('passwords.urls', 'passwords'), namespace='passwords')),
+    path('websites/', include(('websites.urls', 'websites'), namespace='websites')),
 ]

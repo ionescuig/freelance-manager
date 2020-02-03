@@ -7,6 +7,7 @@ from customers.models import Customer
 from projects.models import Project
 from subscriptions.models import Subscription
 from passwords.models import Password
+from websites.models import Website
 
 
 class HomePageView(LoginRequiredMixin, ListView):
@@ -22,8 +23,10 @@ class HomePageView(LoginRequiredMixin, ListView):
         projects = Project.objects.all()
         subscriptions = Subscription.objects.all()
         passwords = Password.objects.all()
+        websites = Website.objects.all()
         context['customers'] = customers
         context['projects'] = projects
         context['subscriptions'] = subscriptions
         context['passwords'] = passwords
+        context['websites'] = websites
         return context
