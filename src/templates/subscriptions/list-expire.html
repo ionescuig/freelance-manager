@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    FM | subscriptions
+{% endblock title %}
+
+{% block body %}
+    <div class="text-center">
+        <div>
+            <h1>Subscriptions page</h1>
+            <h4 style="color: red">Not finished</h4>
+            <hr>
+        </div>
+    </div>
+
+    <div>
+    <table>
+        <tr>
+            <th style="padding-right: 75px">Project</th>
+            <th style="padding-right: 75px">Website</th>
+            <th style="padding-right: 75px">Created Date</th>
+            <th>Renewal Date</th>
+        </tr>
+        {% for subscription in object_list %}
+            <tr>
+                <td><a href="{% url 'subscriptions:detail' pk=subscription.pk %}">{{ subscription.project.name }}</a></td>
+                <td><a href="{% url 'subscriptions:detail' pk=subscription.pk %}">{{ subscription.website.name }}</a></td>
+                <td><a href="{% url 'subscriptions:detail' pk=subscription.pk %}">{{ subscription.date_created }}</a></td>
+                <td><a href="{% url 'subscriptions:detail' pk=subscription.pk %}">{{ subscription.date_renewal }}</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    </div>
+{% endblock body %}

@@ -31,3 +31,14 @@ class SubscriptionDeleteView(LoginRequiredMixin, DeleteView):
     template_name = 'subscriptions/delete.html'
     model = Subscription
     success_url = reverse_lazy('subscriptions:list')
+
+
+def date_renewal_default():
+    from datetime import date, timedelta
+    return date.today()+timedelta(days=31)
+
+
+class SubscriptionExpireView(LoginRequiredMixin, ListView):
+    template_name = 'subscriptions/list-expire.html'
+    model = Subscription
+    queryset = Subscription.objects.filter(date_renewal__lte=date_renewal_default())
