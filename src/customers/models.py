@@ -45,6 +45,19 @@ class Customer(models.Model):
             return self.name
 
     def clean(self):
+        # check if customer exists
+        name_exists = Customer.objects.filter(name=self.name)
+        if self.company:
+            company_exists = Customer.objects.filter(company=self.company)
+        else:
+            company_exists = None
+        if name_exists:
+            if self.company and company_exists and self.company == company_exists[0].company:
+                raise ValidationError({"name": ValidationError("Customer already exists: {}".format(self))})
+            if not self.company and not company_exists:
+                raise ValidationError({"name": ValidationError("Customer already exists: {}".format(self))})
+
+        # check if card expiry date is in the past
         if self.card_exp_date:
             if self.card_exp_date < date.today():
                 raise ValidationError({"card_exp_date": ValidationError("Card expired or wrong date")})
