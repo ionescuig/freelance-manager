@@ -18,5 +18,6 @@
             {{ form.as_p }}
             <input type="submit" value="Update">
         </form>
+        <a href="{% url 'subscriptions:detail' pk=subscription.pk %}">Cancel</a>
     </div>
 {% endblock body %}

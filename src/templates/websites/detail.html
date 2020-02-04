@@ -19,11 +19,7 @@
     </div>
 
     <div>
-        {% for label, value in object.get_fields %}
-            <p>
-                <label>{{ label }}:</label>
-                <span>{{ value|default:"-" }}</span>
-            </p>
-        {% endfor %}
+        <p><strong>Name:</strong> {{ website.name }}</p>
+        <p><strong>URL:</strong> {{ website.url }}</p>
     </div>
 {% endblock body %}

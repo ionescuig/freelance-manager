@@ -4,6 +4,7 @@ from django.urls import reverse_lazy
 
 from .forms import CustomerForm
 from .models import Customer
+from projects.models import Project
 
 
 class CustomerCreateView(LoginRequiredMixin, CreateView):

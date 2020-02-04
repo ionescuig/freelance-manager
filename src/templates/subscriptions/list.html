@@ -15,10 +15,21 @@
     </div>
 
     <div>
-    {% for subscription in object_list %}
-        <p>
-            <a href="{% url 'subscriptions:detail' pk=subscription.pk %}">{{ subscription }}</a></p>
-    {% endfor %}
-
+        <table>
+            <tr>
+                <th style="padding-right: 75px">Project</th>
+                <th style="padding-right: 75px">Website</th>
+                <th style="padding-right: 75px">Created Date</th>
+                <th>Renewal Date</th>
+            </tr>
+            {% for subscription in object_list %}
+                <tr>
+                    <td><a href="{% url 'projects:detail' pk=subscription.project.pk %}">{{ subscription.project.name }}</a></td>
+                    <td><a href="{% url 'subscriptions:detail' pk=subscription.pk %}">{{ subscription.website.name }}</a></td>
+                    <td>{{ subscription.date_created }}</td>
+                    <td>{{ subscription.date_renewal }}</td>
+                </tr>
+            {% endfor %}
+        </table>
     </div>
 {% endblock body %}

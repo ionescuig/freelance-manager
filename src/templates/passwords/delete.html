@@ -20,5 +20,6 @@
             {{ form.as_p }}
             <input type="submit" value="Delete">
         </form>
+        <a href="{% url 'passwords:detail' pk=password.pk %}">Cancel</a>
     </div>
 {% endblock body %}

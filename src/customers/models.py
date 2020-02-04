@@ -21,6 +21,7 @@ class Customer(models.Model):
     post_code           = models.CharField(max_length=9, blank=True)
 
     # bank data
+    bank            = models.CharField(max_length=35, blank=True)
     sort_code       = models.CharField(
         validators=[RegexValidator(regex='^\d{6}$', message='Invalid sort code', code='nomatch')],
         max_length=6, blank=True)
@@ -51,7 +52,7 @@ class Customer(models.Model):
             company_exists = Customer.objects.filter(company=self.company)
         else:
             company_exists = None
-        if name_exists:
+        if name_exists and name_exists[0].pk != self.pk:
             if self.company and company_exists and self.company == company_exists[0].company:
                 raise ValidationError({"name": ValidationError("Customer already exists: {}".format(self))})
             if not self.company and not company_exists:

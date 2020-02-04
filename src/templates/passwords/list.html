@@ -15,10 +15,18 @@
     </div>
 
     <div>
-    {% for password in object_list %}
-        <p>
-            <a href="{% url 'passwords:detail' pk=password.pk %}">{{ password }}</a></p>
-    {% endfor %}
+        <table>
+            <tr>
+                <th style="padding-right: 75px">Project</th>
+                <th>Website</th>
 
+            </tr>
+            {% for password in object_list %}
+                <tr>
+                    <td><a href="{% url 'projects:detail' pk=password.project.pk %}">{{ password.project.name }}</a></td>
+                    <td><a href="{% url 'passwords:detail' pk=password.pk %}">{{ password.website.name }}</a></td>
+                </tr>
+            {% endfor %}
+        </table>
     </div>
 {% endblock body %}

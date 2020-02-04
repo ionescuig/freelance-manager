@@ -13,12 +13,42 @@
             <hr>
         </div>
     </div>
+
     <div>
-        Are you sure you want to delete {{ website }}
+        <p>This website is related to {{ website.subscription_set.count }} subscriptions and {{ website.password_set.count }} passwords.</p>
+        {% if website.subscription_set.count %}
+            <p>
+                <strong>Subscriptions:</strong>
+                <ul>
+                    {% for subscription in website.subscription_set.all %}
+                        <li><a href="{% url 'subscriptions:detail' pk=subscription.pk %}">{{ subscription }}</a></li>
+                    {% endfor %}
+                </ul>
+            </p>
+        {% endif %}
+
+        {% if website.password_set.count %}
+            <p>
+                <strong>Passwords:</strong>
+                <ul>
+                    {% for password in website.password_set.all %}
+                        <li><a href="{% url 'passwords:detail' pk=password.pk %}">{{ password }}</a></li>
+                    {% endfor %}
+                </ul>
+            </p>
+        {% endif %}
+
+        {% if website.subscription_set.count or website.password_set.count %}
+            <p>This action will delete all subscriptions and passwords connected to this website!
+                <br>This action is irreversible.</p>
+        {% endif %}
+        <br>
+        <p><strong>Are you sure you want to delete {{ website }}?</strong></p>
         <form method="POST">
             {% csrf_token %}
             {{ form.as_p }}
             <input type="submit" value="Delete">
         </form>
+        <a href="{% url 'websites:detail' pk=website.pk %}">Cancel</a>
     </div>
 {% endblock body %}

@@ -27,6 +27,18 @@ class PasswordListView(LoginRequiredMixin, ListView):
     model = Password
 
 
+class ProjectPasswordsListView(LoginRequiredMixin, ListView):
+    """
+    Passwords for a specific project.
+    """
+    template_name = 'passwords/list.html'
+    model = Password
+
+    def get_queryset(self):
+        pk = self.kwargs['pk']
+        return Password.objects.filter(project_id=pk)
+
+
 class PasswordDeleteView(LoginRequiredMixin, DeleteView):
     template_name = 'passwords/delete.html'
     model = Password

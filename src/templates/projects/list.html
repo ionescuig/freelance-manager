@@ -15,10 +15,33 @@
     </div>
 
     <div>
-    {% for project in object_list %}
-        <p>
-            <a href="{% url 'projects:detail' pk=project.pk %}">{{ project }}</a></p>
-    {% endfor %}
-
+        <table>
+            <tr>
+                <th style="padding-right: 75px">Project</th>
+                <th style="padding-right: 75px">Customer</th>
+                <th style="padding-right: 75px">Subscriptions</th>
+                <th>Passwords</th>
+            </tr>
+            {% for project in object_list %}
+                <tr>
+                    <td><a href="{% url 'projects:detail' pk=project.pk %}">{{ project.name }}</a></td>
+                    <td><a href="{% url 'customers:detail' pk=project.customer.pk %}">{{ project.customer.name }}</a></td>
+                    <td>
+                        {% if project.subscription_set.all.count > 0 %}
+                            <a href="{% url 'subscriptions:list_project' pk=project.pk %}">{{ project.subscription_set.all.count }}</a>
+                        {% else %}
+                            {{ project.subscription_set.all.count }}
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if project.password_set.all.count > 0 %}
+                            <a href="{% url 'passwords:list_project' pk=project.pk %}">{{ project.password_set.all.count }}</a>
+                        {% else %}
+                            {{ project.password_set.all.count }}
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
     </div>
 {% endblock body %}

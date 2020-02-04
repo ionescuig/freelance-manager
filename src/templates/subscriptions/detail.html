@@ -18,12 +18,11 @@
         <br>
     </div>
 
-    <div class="col-md-4 offset-md-4">
-        {% for label, value in object.get_fields %}
-            <div class="row">
-                <div class="col-md-6 text-right">{{ label }}</div>
-                <div class="col-md-6">{{ value|default:"-" }}</div>
-            </div>
-        {% endfor %}
+    <div>
+        <p><strong>Project:</strong> {{ subscription.project }}</p>
+        <p><strong>Website:</strong> {{ subscription.website }}</p>
+        <p><strong>Created Date:</strong> {{ subscription.date_created }}</p>
+        <p><strong>Renewal Date:</strong> {{ subscription.date_renewal }}</p>
+        <p><strong>Notes:</strong> {{ subscription.notes|default:"-" }}</p>
     </div>
 {% endblock body %}

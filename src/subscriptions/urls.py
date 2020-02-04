@@ -1,7 +1,7 @@
 from django.urls import path
 
 from .views import SubscriptionCreateView, SubscriptionDeleteView, SubscriptionDetailView, SubscriptionListView,\
-    SubscriptionUpdateView, SubscriptionExpireView
+    SubscriptionUpdateView, SubscriptionExpireView, ProjectSubscriptionsListView
 
 urlpatterns = [
     path('new/', SubscriptionCreateView.as_view(), name='create'),
@@ -10,4 +10,5 @@ urlpatterns = [
     path('<int:pk>/update', SubscriptionUpdateView.as_view(), name='update'),
     path('', SubscriptionListView.as_view(), name='list'),
     path('expire/', SubscriptionExpireView.as_view(), name='list_expire'),
+    path('project/<int:pk>/', ProjectSubscriptionsListView.as_view(), name='list_project'),
 ]

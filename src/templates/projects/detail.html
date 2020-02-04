@@ -19,11 +19,27 @@
     </div>
 
     <div>
-        {% for label, value in object.get_fields %}
-            <p>
-                <label>{{ label }}:</label>
-                <span>{{ value|default:"-" }}</span>
-            </p>
-        {% endfor %}
+        <p><strong>Name:</strong> {{ project.name }}</p>
+        <p><strong>Customer:</strong> {{ project.customer.name }}</p>
+        <p><strong>Notes:</strong> {{ project.notes|default:"-" }}</p>
+        <br>
+        <p>
+            <strong>Subscriptions:</strong>
+            <ul>
+                {% for subscription in project.subscription_set.all %}
+                    <li><a href="{% url 'subscriptions:detail' pk=subscription.pk %}">{{ subscription.website }}</a></li>
+                {% endfor %}
+            </ul>
+        </p>
+        <br>
+        <p>
+            <strong>Passwords:</strong>
+            <ul>
+                {% for password in project.password_set.all %}
+                    <li><a href="{% url 'passwords:detail' pk=password.pk %}">{{ password.website }}</a></li>
+                {% endfor %}
+            </ul>
+        </p>
+
     </div>
 {% endblock body %}

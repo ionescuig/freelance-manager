@@ -19,11 +19,24 @@
     </div>
 
     <div>
-        {% for label, value in object.get_fields %}
-            <p>
-                <label>{{ label }}:</label>
-                <span>{{ value|default:"-" }}</span>
-            </p>
-        {% endfor %}
+        <p><strong>Name:</strong> {{ customer.name }}</p>
+        <p><strong>Email:</strong> {{ customer.email }}</p>
+        <p><strong>Phone:</strong> {{ customer.phone }}</p>
+        <br>
+        <p><strong>Company:</strong> {{ customer.company|default:"-" }}</p>
+        <br>
+        <p><strong>Town:</strong> {{ customer.town }}</p>
+        <p><strong>Country:</strong> {{ customer.country }}</p>
+        <p><strong>Address:</strong> {{ customer.address_first_line|default:"-" }}</p>
+        <p><strong>Post Code:</strong> {{ customer.post_code|default:"-" }}</p>
+        <br>
+        <p><strong>Bank:</strong> {{ customer.bank|default:"-" }}</p>
+        <p><strong>Sort Code:</strong> {{ customer.sort_code|default:"-" }}</p>
+        <p><strong>Account no:</strong> {{ customer.account_no|default:"-" }}</p>
+        <p><strong>IBAN:</strong> {{ customer.iban|default:"-" }}</p>
+        <p><strong>Card no:</strong> {{ customer.card_no|default:"-" }}</p>
+        <p><strong>Card Expiry Date:</strong> {{ customer.card_exp_date|default:"-" }}</p>
+        <br>
+        <p><strong>Notes:</strong> {{ customer.notes|default:"-" }}</p>
     </div>
 {% endblock body %}

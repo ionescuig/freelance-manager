@@ -19,11 +19,10 @@
     </div>
 
     <div>
-        {% for label, value in object.get_fields %}
-            <p>
-                <label>{{ label }}:</label>
-                <span>{{ value|default:"-" }}</span>
-            </p>
-        {% endfor %}
+        <p><strong>Project:</strong> {{ password.project }}</p>
+        <p><strong>Website:</strong> {{ password.website }}</p>
+        <p><strong>Username:</strong> {{ password.username }}</p>
+        <p><strong>Password:</strong> {{ password.password }}</p>
+        <p><strong>Notes:</strong> {{ password.notes|default:"-" }}</p>
     </div>
 {% endblock body %}

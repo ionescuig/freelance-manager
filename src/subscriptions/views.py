@@ -27,6 +27,18 @@ class SubscriptionListView(LoginRequiredMixin, ListView):
     model = Subscription
 
 
+class ProjectSubscriptionsListView(LoginRequiredMixin, ListView):
+    """
+    Subscriptions for a specific project.
+    """
+    template_name = 'subscriptions/list.html'
+    model = Subscription
+
+    def get_queryset(self):
+        pk = self.kwargs['pk']
+        return Subscription.objects.filter(project_id=pk)
+
+
 class SubscriptionDeleteView(LoginRequiredMixin, DeleteView):
     template_name = 'subscriptions/delete.html'
     model = Subscription
@@ -41,4 +53,4 @@ def date_renewal_default():
 class SubscriptionExpireView(LoginRequiredMixin, ListView):
     template_name = 'subscriptions/list-expire.html'
     model = Subscription
-    queryset = Subscription.objects.filter(date_renewal__lte=date_renewal_default())
+    queryset = Subscription.objects.filter(date_renewal__lte=date_renewal_default()).order_by('date_renewal')

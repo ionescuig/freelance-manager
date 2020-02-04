@@ -15,10 +15,17 @@
     </div>
 
     <div>
-    {% for website in object_list %}
-        <p>
-            <a href="{% url 'websites:detail' pk=website.pk %}">{{ website }}</a></p>
-    {% endfor %}
-
+        <table>
+            <tr>
+                <th style="padding-right: 75px">Name</th>
+                <th>URL</th>
+            </tr>
+            {% for website in object_list %}
+                <tr>
+                    <td><a href="{% url 'websites:detail' pk=website.pk %}">{{ website.name }}</a></td>
+                    <td>{{ website.url }}</td>
+                </tr>
+            {% endfor %}
+        </table>
     </div>
 {% endblock body %}
