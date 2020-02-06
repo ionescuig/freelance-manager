@@ -16,12 +16,11 @@
             </h5>
         </div>
 
-        <div class="jumbotron">
+        <div class="jumbotron" style="padding: 1em">
             <h3>Website is under construction</h3>
             <p>
                 The database resets three times a day.
-                <br>The account will be used by multiple users, so
-                <br><strong style="color: red">DON'T</strong> use real data.
+                <br>The account will be used by multiple users, so <strong style="color: red">DON'T</strong> use real data.
             </p>
 
             <p>
@@ -29,9 +28,17 @@
                     <a href="{% url 'home' %}">Home</a>
                 {% else %}
                     To test it or have some fun please
-                    <a href="{% url 'login' %}">Login</a>
+                    <a class="btn btn-sm btn-primary" href="{% url 'login' %}">Login</a>
                     <br>A user and password will be provided on Login Page.
                 {% endif %}
+            </p>
+            <br>
+            <p>
+                <strong>Things to be added:</strong>
+                <br>subscription for updates
+                <br>contact form
+                <br>mail when subscriptions are about to expire: 1 month/week/day before
+                <br>frontend
             </p>
         </div>
     </div>
