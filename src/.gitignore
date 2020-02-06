@@ -1,0 +1,15 @@
+src/manager/settings/local.py
+local.py
+local.*
+
+db.sqlite3
+env/
+
+__pycache__/
+.idea/
+
+jupyter_notebooks/
+
+*.pyc
+*.key
+*.py[cod]

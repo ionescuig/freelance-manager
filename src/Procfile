@@ -1,0 +1,2 @@
+web: gunicorn manager.wsgi
+worker: celery -A manager worker -B -l INFO
