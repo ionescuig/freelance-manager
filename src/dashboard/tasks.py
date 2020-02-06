@@ -10,6 +10,5 @@ def repopulate_db():
     from dashboard.scripts.db_populate import populate_db
 
     clean_db()
-    logger.info(">>> Database cleaned")
     populate_db()
-    logger.info(">>> Database populated")
+    logger.info(">>> Database repopulated")
