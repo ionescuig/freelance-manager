@@ -1,5 +1,5 @@
-# Freelance Accounts Manager
-##### Helps freelancers with keeping track of customers, projects, subscriptions and passwords
+# Freelance Manager
+##### Helps freelancer web developers with keeping track of customers, projects, subscriptions and passwords
 [Heroku](https://freelancemanager.herokuapp.com)
 <br><br>
 _work in progress_
@@ -19,6 +19,6 @@ Apps:
 <hr>
 
 Next:
-- for testing website: refresh database at least twice a day (celery tasks)
 - send email when a subscription is about to expire (1 month, 1 week, 1 day)
+- contact form/template
 - frontend
