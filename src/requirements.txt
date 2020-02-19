@@ -1,4 +1,4 @@
-Django==2.2.9
+Django==2.2.10
 amqp==2.5.2
 billiard==3.6.2.0
 celery==4.4.0
