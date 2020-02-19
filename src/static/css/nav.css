@@ -1,20 +1,25 @@
 .nav {
     border-radius: 0.5rem 0 0 0.5rem;
-    background-color: darkslategrey;
+    background-color: #646464;
     padding-top: 10px;
     padding-bottom: 10px;
     height: 100%;
 }
 
 .nav .active {
-    color: lightblue;
+    color: cornflowerblue;
 }
 
 .nav a {
     font-size: 1em;
+    color: #e5e5e5;
 }
 
-.nav hr {
-    background-color: yellow;
-    padding-left: 85%;
+.nav > .dropdown-menu {
+    background-color: #646464;
+}
+
+.nav > .dropdown-menu a:hover {
+    color: cornflowerblue;
+    background-color: #646464;
 }

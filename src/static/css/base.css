@@ -1,3 +1,8 @@
+/*colors:*/
+/*nav-color: #646464*/
+/*title-color: darkslategrey*/
+/*content-color: #e5e5e5*/
+
 .container-danger-top {
     height: 40px;
     margin-bottom: 2px;
@@ -10,16 +15,16 @@
 
 .container-body {
     border-radius: 0.5rem;
-    background-color: lightgreen;
+    background-color: #e5e5e5;
 }
 
 .title {
     border-radius: 0 0.5rem 0 0;
-    background: linear-gradient(90deg, #2F4F4F 0%, #2F4F4F 10%, #90EE90 50%, #2F4F4F 90%, #2F4F4F 100%);
+    background: linear-gradient(90deg, #646464 0%, #646464 10%, #e5e5e5 50%, #646464 90%, #646464 100%);
     color: darkslategrey;
 }
 
 .content {
     padding: 1em;
-    background-color: lightgreen;
+    background-color: #e5e5e5;
 }
