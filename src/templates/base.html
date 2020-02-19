@@ -15,6 +15,7 @@
           crossorigin="anonymous">
 
     <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
     <link rel="stylesheet" href="{% static 'css/nav.css' %}">
     <link rel="stylesheet" href="{% static 'css/danger-top.css' %}">
 
@@ -31,15 +32,40 @@
     <div class="container-fluid h-100">
         <div class="row">
             <div class="col-md-8 mx-auto">
-                {% include 'snippets/nav.html' %}
-                {% include 'snippets/danger-top.html' %}
-                {% block body-top %}{% endblock %}
+                <div class="container-danger-top">
+                    {% include 'snippets/danger-top.html' %}
+                </div>
 
-                {% block body %}
-                    <h1>Freelance Manager</h1>
-                {% endblock body %}
+                <div class="container-body-top">
+                    {% block body-top %}{% endblock %}
+                </div>
 
-                {% include 'snippets/message-bottom.html' %}
+                <div class="container-body">
+                    <div class="row no-gutters">
+                        <div class="col-md-2 container-nav">
+                            {% include 'snippets/nav.html' %}
+                        </div>
+
+                        <div class="col-md-10">
+                            <h2 class="text-center title">
+                                {% block content-title %}
+                                    <h2>Freelance Manager</h2>
+                                {% endblock content-title %}
+                            </h2>
+
+                            <div class="content">
+                                {% block body %}
+                                    <h3>Freelance Manager</h3>
+                                {% endblock body %}
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="container-body-bottom">
+                    {% include 'snippets/message-bottom.html' %}
+                </div>
             </div>
         </div>
     </div>

@@ -5,13 +5,12 @@
     FM | New Customer
 {% endblock title %}
 
+{% block content-title %}
+    New Customer
+{% endblock %}
+
 {% block body %}
     <div class="text-center">
-        <div>
-            <h1>New Customer page</h1>
-            <hr>
-        </div>
-
         <form method="POST">
             {% csrf_token %}
             {{ form.as_p }}

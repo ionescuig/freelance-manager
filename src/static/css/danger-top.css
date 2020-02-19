@@ -1,8 +1,9 @@
 .danger-top {
-    /*margin-top: -0.8rem;*/
-    background-color: #e74c3c;
-    border-radius: 0.5em;
-
     color: #ecf0f1;
     font-size: 0.8rem;
+
+    background-color: #e74c3c;
+    border-radius: 0.5em;
+    overflow: hidden;
+    max-height: 100%;
 }

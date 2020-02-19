@@ -1,7 +1,19 @@
-nav a {
-    font-size: 1.2em;
+.nav {
+    background-color: darkslategrey;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    height: 100%;
 }
 
-.navbar li{
-    padding-right: 1em;
-   }
+.nav .active {
+    color: lightblue;
+}
+
+.nav a {
+    font-size: 1em;
+}
+
+.nav hr {
+    background-color: yellow;
+    padding-left: 85%;
+}

@@ -5,14 +5,11 @@
     FM | Customers
 {% endblock title %}
 
-{% block body %}
-    <div class="text-center">
-        <div>
-            <h1>Customers page</h1>
-            <hr>
-        </div>
-    </div>
+{% block content-title %}
+    Customers
+{% endblock %}
 
+{% block body %}
     <div>
     {% for customer in object_list %}
         <p>
