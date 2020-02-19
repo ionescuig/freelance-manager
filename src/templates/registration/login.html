@@ -1,26 +1,26 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+
 {% block title %}
     FM | Login
 {% endblock %}
 
-{% block content-title %}
-    Please login
-{% endblock content-title %}
-
 {% block body %}
     <div class="container offset-md-4 col-md-4 text-center">
-        <h1>Please login</h1>
-        <div>
+        <h2 class="title">Please login</h2>
+        <div class="content">
             User: manager
             <br>Password: freelance
-        </div>
-        <br>
-        <form method="POST">
+            <hr>
+            <form method="POST">
             {% csrf_token %}
             {{ form.as_p }}
             <button class="btn btn-primary" type="submit">Login</button>
         </form>
+        </div>
     </div>
 {% endblock body %}

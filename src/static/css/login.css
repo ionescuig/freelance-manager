@@ -1,0 +1,18 @@
+.container-body {
+    border-radius: 0.5rem;
+    background-color: transparent;
+}
+
+.title {
+    border-radius: 0.5rem 0.5rem 0 0;
+    background: linear-gradient(90deg, #646464 0%, #646464 10%, #e5e5e5 50%, #646464 90%, #646464 100%);
+    color: darkslategrey;
+    margin-bottom: 0;
+}
+
+.content {
+    margin-top: 0;
+    border-radius: 0 0 0.5rem 0.5rem;
+    padding: 1em;
+    background-color: #e5e5e5;
+}
