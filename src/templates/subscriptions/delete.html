@@ -5,20 +5,16 @@
     FM | Delete Subscription
 {% endblock title %}
 
-{% block body %}
-    <div class="text-center">
-        <div>
-            <h1>Delete Subscription</h1>
-            <hr>
-        </div>
-    </div>
-    <div>
-        Are you sure you want to delete {{ subscription }}
-        <form method="POST">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <input type="submit" value="Delete">
-        </form>
+{% block content-title %}
+    Delete Subscription: <strong>{{ subscription }}</strong>
+{% endblock content-title %}
+
+{% block content %}
+    Are you sure you want to delete subscription: {{ subscription }}
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Delete">
         <a href="{% url 'subscriptions:detail' pk=subscription.pk %}">Cancel</a>
-    </div>
-{% endblock body %}
+    </form>
+{% endblock content %}

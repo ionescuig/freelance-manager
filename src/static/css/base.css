@@ -9,11 +9,13 @@
 }
 
 .container-body {
+    border-radius: 0.5rem;
     background-color: lightgreen;
 }
 
 .title {
-    background-image: linear-gradient(to right, darkslategrey, darkslategrey, lightgreen, darkslategrey, darkslategrey);
+    border-radius: 0 0.5rem 0 0;
+    background: linear-gradient(90deg, #2F4F4F 0%, #2F4F4F 10%, #90EE90 50%, #2F4F4F 90%, #2F4F4F 100%);
     color: darkslategrey;
 }
 

@@ -5,13 +5,12 @@
     FM | Website details
 {% endblock title %}
 
-{% block body %}
+{% block content-title %}
+    Website: <strong>{{ website }}</strong>
+{% endblock content-title %}
+
+{% block content %}
     <div class="text-center">
-        <div>
-            <h1>Website detail page</h1>
-            <hr>
-        </div>
-        <h2>{{ website }}</h2>
         <a href="{% url 'websites:update' pk=website.pk %}">Update</a> |
         <a href="{% url 'websites:delete' pk=website.pk %}">Delete</a>
         <br>
@@ -21,4 +20,4 @@
         <p><strong>Name:</strong> {{ website.name }}</p>
         <p><strong>URL:</strong> {{ website.url }}</p>
     </div>
-{% endblock body %}
+{% endblock content %}

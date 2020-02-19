@@ -5,13 +5,12 @@
     FM | Project details
 {% endblock title %}
 
-{% block body %}
+{% block content-title %}
+    Project: <strong>{{ project }}</strong>
+{% endblock content-title %}
+
+{% block content %}
     <div class="text-center">
-        <div>
-            <h1>Project detail page</h1>
-            <hr>
-        </div>
-        <h2>{{ project }}</h2>
         <a href="{% url 'projects:update' pk=project.pk %}">Update</a> |
         <a href="{% url 'projects:delete' pk=project.pk %}">Delete</a>
         <br>
@@ -41,4 +40,4 @@
         </p>
 
     </div>
-{% endblock body %}
+{% endblock content %}

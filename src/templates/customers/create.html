@@ -7,9 +7,9 @@
 
 {% block content-title %}
     New Customer
-{% endblock %}
+{% endblock content-title %}
 
-{% block body %}
+{% block content %}
     <div class="text-center">
         <form method="POST">
             {% csrf_token %}
@@ -17,4 +17,4 @@
             <input type="submit" value="Save">
         </form>
     </div>
-{% endblock body %}
+{% endblock content %}

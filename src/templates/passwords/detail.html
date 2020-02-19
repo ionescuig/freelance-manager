@@ -5,13 +5,12 @@
     FM | Password details
 {% endblock title %}
 
-{% block body %}
+{% block content-title %}
+    Password: <strong>{{ password.project }} - {{ password.website }}</strong>
+{% endblock content-title %}
+
+{% block content %}
     <div class="text-center">
-        <div>
-            <h1>Password detail page</h1>
-            <hr>
-        </div>
-        <h2>{{ website }}</h2>
         <a href="{% url 'passwords:update' pk=password.pk %}">Update</a> |
         <a href="{% url 'passwords:delete' pk=password.pk %}">Delete</a>
         <br>
@@ -24,4 +23,4 @@
         <p><strong>Password:</strong> {{ password.password }}</p>
         <p><strong>Notes:</strong> {{ password.notes|default:"-" }}</p>
     </div>
-{% endblock body %}
+{% endblock content %}

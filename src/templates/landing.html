@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/landing.css' %}">
+{% endblock %}
+
 {% block title %}
     Freelance Manager
 {% endblock title %}
@@ -16,7 +20,7 @@
             </h5>
         </div>
 
-        <div class="jumbotron" style="padding: 1em">
+        <div class="jumbotron">
             <h3>Website is under construction</h3>
             <p>
                 The database resets three times a day.

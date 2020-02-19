@@ -5,27 +5,22 @@
     FM | Passwords
 {% endblock title %}
 
-{% block body %}
-    <div class="text-center">
-        <div>
-            <h1>Passwords page</h1>
-            <hr>
-        </div>
-    </div>
+{% block content-title %}
+    Passwords
+{% endblock content-title %}
 
-    <div>
-        <table>
+{% block content %}
+    <table>
+        <tr>
+            <th style="padding-right: 75px">Project</th>
+            <th>Website</th>
+
+        </tr>
+        {% for password in object_list %}
             <tr>
-                <th style="padding-right: 75px">Project</th>
-                <th>Website</th>
-
+                <td><a href="{% url 'projects:detail' pk=password.project.pk %}">{{ password.project.name }}</a></td>
+                <td><a href="{% url 'passwords:detail' pk=password.pk %}">{{ password.website.name }}</a></td>
             </tr>
-            {% for password in object_list %}
-                <tr>
-                    <td><a href="{% url 'projects:detail' pk=password.project.pk %}">{{ password.project.name }}</a></td>
-                    <td><a href="{% url 'passwords:detail' pk=password.pk %}">{{ password.website.name }}</a></td>
-                </tr>
-            {% endfor %}
-        </table>
-    </div>
-{% endblock body %}
+        {% endfor %}
+    </table>
+{% endblock content %}

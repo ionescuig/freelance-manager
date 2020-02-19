@@ -6,16 +6,11 @@
 {% endblock title %}
 
 {% block content-title %}
-    {{ customer }}
-{% endblock %}
+    Customer: <strong>{{ customer }}</strong>
+{% endblock content-title %}
 
-{% block body %}
+{% block content %}
     <div class="text-center">
-        <div>
-            <h1>Customer detail page</h1>
-            <hr>
-        </div>
-        <h2>{{ customer }}</h2>
         <a href="{% url 'customers:update' pk=customer.pk %}">Update</a> |
         <a href="{% url 'customers:delete' pk=customer.pk %}">Delete</a>
         <br>
@@ -42,4 +37,4 @@
         <br>
         <p><strong>Notes:</strong> {{ customer.notes|default:"-" }}</p>
     </div>
-{% endblock body %}
+{% endblock content %}

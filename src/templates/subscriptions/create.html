@@ -5,13 +5,12 @@
     FM | New Subscription
 {% endblock title %}
 
-{% block body %}
-    <div class="text-center">
-        <div>
-            <h1>New Subscription page</h1>
-            <hr>
-        </div>
+{% block content-title %}
+    New Subscription
+{% endblock content-title %}
 
+{% block content %}
+    <div class="text-center">
         <form method="POST">
             {% csrf_token %}
             {{ form.as_p }}
@@ -19,4 +18,4 @@
         </form>
 
     </div>
-{% endblock body %}
+{% endblock content %}

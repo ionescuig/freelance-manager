@@ -7,9 +7,9 @@
 
 {% block content-title %}
     Customers
-{% endblock %}
+{% endblock content-title %}
 
-{% block body %}
+{% block content %}
     <div>
     {% for customer in object_list %}
         <p>
@@ -17,4 +17,4 @@
     {% endfor %}
 
     </div>
-{% endblock body %}
+{% endblock content %}

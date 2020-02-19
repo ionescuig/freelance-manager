@@ -5,18 +5,17 @@
     FM | Update Customer
 {% endblock title %}
 
-{% block body %}
-    <div class="text-center">
-        <div>
-            <h1>Customer Update Page</h1>
-            <hr>
-        </div>
+{% block content-title %}
+    Update Customer: <strong>{{ customer }}</strong>
+{% endblock content-title %}
 
+{% block content %}
+    <div class="text-center">
         <form method="POST">
             {% csrf_token %}
             {{ form.as_p }}
             <input type="submit" value="Update">
+            <a href="{% url 'customers:detail' pk=customer.pk %}">Cancel</a>
         </form>
-        <a href="{% url 'customers:detail' pk=customer.pk %}">Cancel</a>
     </div>
-{% endblock body %}
+{% endblock content %}

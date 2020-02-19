@@ -5,6 +5,10 @@
     <link rel="stylesheet" href="{% static 'css/warning-top.css' %}">
 {% endblock %}
 
+{% block content-top %}
+    {% include 'snippets/warning-top.html' %}
+{% endblock content-top %}
+
 {% block title %}
     FM | Home
 {% endblock title %}
@@ -15,9 +19,9 @@
 
 {% block content-title %}
     Dashboard
-{% endblock %}
+{% endblock content-title %}
 
-{% block body %}
+{% block content %}
     <div>
         <p><a href="{% url 'customers:list' %}">Customers: {{ customers.count }}</a></p>
         <p><a href="{% url 'projects:list' %}">Projects: {{ projects.count }}</a></p>
@@ -25,4 +29,4 @@
         <p><a href="{% url 'passwords:list' %}">Passwords: {{ passwords.count }}</a></p>
         <p><a href="{% url 'websites:list' %}">Websites: {{ websites.count }}</a></p>
     </div>
-{% endblock body %}
+{% endblock content %}

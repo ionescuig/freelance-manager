@@ -5,18 +5,17 @@
     FM | Update Website
 {% endblock title %}
 
-{% block body %}
-    <div class="text-center">
-        <div>
-            <h1>Website Update Page</h1>
-            <hr>
-        </div>
+{% block content-title %}
+    Update Website: <strong>{{ website }}</strong>
+{% endblock content-title %}
 
+{% block content %}
+    <div class="text-center">
         <form method="POST">
             {% csrf_token %}
             {{ form.as_p }}
             <input type="submit" value="Update">
+            <a href="{% url 'websites:detail' pk=website.pk %}">Cancel</a>
         </form>
-        <a href="{% url 'websites:detail' pk=website.pk %}">Cancel</a>
     </div>
-{% endblock body %}
+{% endblock content %}
