@@ -1,7 +1,7 @@
 {% if user.is_authenticated %}
 <nav class="nav flex-column">
 
-    <a class="nav-link active mb-3" href="{% url 'home' %}">Home</a>
+    <a class="nav-link mb-3" href="{% url 'home' %}">Home</a>
 
     <a class="nav-link" href="{% url 'customers:list' %}">Customers</a>
     <a class="nav-link" href="{% url 'projects:list' %}">Projects</a>

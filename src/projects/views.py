@@ -10,10 +10,20 @@ class ProjectCreateView(LoginRequiredMixin, CreateView):
     template_name = 'projects/create.html'
     form_class = ProjectForm
 
+    def get_context_data(self, **kwargs):
+        context = super(ProjectCreateView, self).get_context_data()
+        context['linkActive'] = 'Projects'
+        return context
+
 
 class ProjectDetailView(LoginRequiredMixin, DetailView):
     template_name = 'projects/detail.html'
     model = Project
+
+    def get_context_data(self, **kwargs):
+        context = super(ProjectDetailView, self).get_context_data()
+        context['linkActive'] = 'Projects'
+        return context
 
 
 class ProjectUpdateView(LoginRequiredMixin, UpdateView):
@@ -21,13 +31,28 @@ class ProjectUpdateView(LoginRequiredMixin, UpdateView):
     form_class = ProjectForm
     queryset = Project.objects.all()
 
+    def get_context_data(self, **kwargs):
+        context = super(ProjectUpdateView, self).get_context_data()
+        context['linkActive'] = 'Projects'
+        return context
+
 
 class ProjectListView(LoginRequiredMixin, ListView):
     template_name = 'projects/list.html'
     model = Project
+
+    def get_context_data(self, **kwargs):
+        context = super(ProjectListView, self).get_context_data()
+        context['linkActive'] = 'Projects'
+        return context
 
 
 class ProjectDeleteView(LoginRequiredMixin, DeleteView):
     template_name = 'projects/delete.html'
     model = Project
     success_url = reverse_lazy('projects:list')
+
+    def get_context_data(self, **kwargs):
+        context = super(ProjectDeleteView, self).get_context_data()
+        context['linkActive'] = 'Projects'
+        return context

@@ -29,4 +29,5 @@ class HomePageView(LoginRequiredMixin, ListView):
         context['subscriptions'] = subscriptions
         context['passwords'] = passwords
         context['websites'] = websites
+        context['linkActive'] = 'Home'
         return context
