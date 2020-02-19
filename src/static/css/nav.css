@@ -15,6 +15,11 @@
     color: #e5e5e5;
 }
 
+.nav a:hover {
+    color: cornflowerblue;
+    text-shadow: 0 0 1rem cornflowerblue;
+}
+
 .nav > .dropdown-menu {
     background-color: #646464;
 }
