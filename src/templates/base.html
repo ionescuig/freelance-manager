@@ -72,7 +72,8 @@
                                         <div class="row mt-4">
                                             {% block content-bottom %}
                                                 <div class="col-md-8">
-                                                    <button class="btn btn-sm btn-secondary" onClick="javascript:history.go(-1);">Cancel</button>
+                                                    <a class="btn btn-sm btn-secondary" href="{% url 'home' %}">Home</a>
+                                                    <button class="btn btn-sm btn-secondary" onClick="javascript:history.go(-1);">Back</button>
                                                 </div>
                                             {% endblock content-bottom %}
                                         </div>
