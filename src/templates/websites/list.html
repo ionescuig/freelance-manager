@@ -30,4 +30,8 @@
     {% endfor %}
 {% endblock content %}
 
-{% block content-bottom %}{% endblock content-bottom %}
+{% block content-bottom %}
+    <div class="col-md-8">
+        <a class="btn btn-sm btn-secondary" href="{% url 'home' %}">Home</a>
+    </div>
+{% endblock content-bottom %}

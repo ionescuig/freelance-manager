@@ -24,7 +24,7 @@
                 <strong>Subscriptions:</strong>
                 <ul>
                     {% for subscription in website.subscription_set.all %}
-                        <li><a href="{% url 'subscriptions:detail' pk=subscription.pk %}">{{ subscription }}</a></li>
+                        <li class="custom-link"><a href="{% url 'subscriptions:detail' pk=subscription.pk %}">{{ subscription }}</a></li>
                     {% endfor %}
                 </ul>
             </p>
@@ -35,7 +35,7 @@
                 <strong>Passwords:</strong>
                 <ul>
                     {% for password in website.password_set.all %}
-                        <li><a href="{% url 'passwords:detail' pk=password.pk %}">{{ password }}</a></li>
+                        <li class="custom-link"><a href="{% url 'passwords:detail' pk=password.pk %}">{{ password }}</a></li>
                     {% endfor %}
                 </ul>
             </p>
