@@ -7,8 +7,9 @@ from .models import Website
 
 
 class WebsiteCreateView(LoginRequiredMixin, CreateView):
-    template_name = 'websites/create.html'
+    template_name = 'websites/create-update.html'
     form_class = WebsiteForm
+    success_url = reverse_lazy('websites:list')
 
     def get_context_data(self, **kwargs):
         context = super(WebsiteCreateView, self).get_context_data()
@@ -16,20 +17,11 @@ class WebsiteCreateView(LoginRequiredMixin, CreateView):
         return context
 
 
-class WebsiteDetailView(LoginRequiredMixin, DetailView):
-    template_name = 'websites/detail.html'
-    model = Website
-
-    def get_context_data(self, **kwargs):
-        context = super(WebsiteDetailView, self).get_context_data()
-        context['linkActive'] = 'Websites'
-        return context
-
-
 class WebsiteUpdateView(LoginRequiredMixin, UpdateView):
-    template_name = 'websites/update.html'
+    template_name = 'websites/create-update.html'
     form_class = WebsiteForm
     queryset = Website.objects.all()
+    success_url = reverse_lazy('websites:list')
 
     def get_context_data(self, **kwargs):
         context = super(WebsiteUpdateView, self).get_context_data()

@@ -10,16 +10,24 @@
 {% endblock content-title %}
 
 {% block content %}
-    <table>
-        <tr>
-            <th style="padding-right: 75px">Name</th>
-            <th>URL</th>
-        </tr>
-        {% for website in object_list %}
-            <tr>
-                <td><a href="{% url 'websites:detail' pk=website.pk %}">{{ website.name }}</a></td>
-                <td>{{ website.url }}</td>
-            </tr>
-        {% endfor %}
-    </table>
+    <div class="row mb-2 mt-2">
+        <div class="col-md-2"><strong>Name</strong></div>
+        <div class="col-md-4"><strong>URL</strong></div>
+    </div>
+    {% for website in object_list %}
+        <div class="row">
+            <div class="col-md-2">
+                {{ website.name }}
+            </div>
+            <div class="col-md-4">
+                {{ website.url }}
+            </div>
+            <div class="col-md-4 mb-1">
+                <a class="btn btn-sm btn-success" href="{% url 'websites:update' pk=website.pk %}">Edit</a>
+                <a class="btn btn-sm btn-danger" href="{% url 'websites:delete' pk=website.pk %}">Delete</a>
+            </div>
+        </div>
+    {% endfor %}
 {% endblock content %}
+
+{% block content-bottom %}{% endblock content-bottom %}

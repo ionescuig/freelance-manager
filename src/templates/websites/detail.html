@@ -10,14 +10,21 @@
 {% endblock content-title %}
 
 {% block content %}
-    <div class="text-center">
-        <a href="{% url 'websites:update' pk=website.pk %}">Update</a> |
-        <a href="{% url 'websites:delete' pk=website.pk %}">Delete</a>
-        <br>
+    <div class="row mb-2 mt-2">
+        <div class="col-md-2"><strong>Name</strong></div>
+        <div class="col-md-4">{{ website.name }}</div>
     </div>
 
-    <div>
-        <p><strong>Name:</strong> {{ website.name }}</p>
-        <p><strong>URL:</strong> {{ website.url }}</p>
+    <div class="row mb-4">
+        <div class="col-md-2"><strong>URL</strong></div>
+        <div class="col-md-4">{{ website.url }}</div>
     </div>
 {% endblock content %}
+
+{% block content-bottom %}
+    <div class="col-md-8">
+        <a class="btn btn-sm btn-success" href="{% url 'websites:update' pk=website.pk %}">Update</a>
+        <a class="btn btn-sm btn-danger" href="{% url 'websites:delete' pk=website.pk %}">Delete</a>
+        <a class="btn btn-sm btn-secondary" href="{% url 'websites:list' %}">Cancel</a>
+    </div>
+{% endblock content-bottom %}
