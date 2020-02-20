@@ -3,6 +3,8 @@
 /*title-color: darkslategrey*/
 /*content-color: #e5e5e5*/
 
+
+/* Containers */
 .container-danger-top {
     height: 40px;
     margin-bottom: 2px;
@@ -18,16 +20,11 @@
     background-color: #e5e5e5;
 }
 
-.title {
-    border-radius: 0 0.5rem 0 0;
-    background: linear-gradient(90deg, #646464 0%, #646464 10%, #e5e5e5 50%, #646464 90%, #646464 100%);
-    color: darkslategrey;
-}
-
 .content {
     padding: 1em;
     background-color: #e5e5e5;
     min-height: 270px;
+    color: darkslategrey;
 }
 
 .content-bottom {
@@ -35,6 +32,35 @@
     background-color: #e5e5e5;
 }
 
+
+/* Elements */
+.title {
+    border-radius: 0 0.5rem 0 0;
+    background: linear-gradient(90deg, #646464 0%, #646464 10%, #e5e5e5 50%, #646464 90%, #646464 100%);
+    color: darkslategrey;
+}
+
+
+/* Links */
+.custom-link a {
+    font-size: 1em;
+    color: cornflowerblue;
+}
+
+.custom-link a:hover {
+    color: royalblue;
+    text-shadow: 0 0 1rem cornflowerblue;
+    text-decoration: none;
+}
+
+
+/* Buttons */
 .btn-secondary {
+    background-color: #646464;
+}
+
+.badge {
+    color: #e5e5e5;
+    font-size: 0.9rem;
     background-color: #646464;
 }
