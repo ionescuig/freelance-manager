@@ -17,7 +17,7 @@
 
 .nav a:hover {
     color: cornflowerblue;
-    text-shadow: 0 0 1rem cornflowerblue;
+    text-shadow: 0 0 1rem royalblue;
 }
 
 .nav > .dropdown-menu {
