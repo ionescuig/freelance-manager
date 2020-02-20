@@ -32,39 +32,57 @@
     <div class="container-fluid h-100">
             <div class="row">
                 <div class="col-md-8 mx-auto">
+                    <!-- Danger message at the top -->
                     <div class="container-danger-top">
                         {% include 'snippets/danger-top.html' %}
                     </div>
 
+                    <!-- Warning message message (subscriptions) -->
                     <div class="container-body-top">
                         {% block content-top %}{% endblock content-top %}
                     </div>
 
+                    <!-- Main body -->
                     <div class="container-body">
                         {% block body %}
+                            <!-- Navigation -->
                             <div class="row no-gutters">
                                 <div class="col-md-2 container-nav">
                                     {% include 'snippets/nav.html' %}
                                 </div>
 
+                                <!-- Content -->
                                 <div class="col-md-10">
+                                    <!-- Content title -->
                                     <h2 class="text-center title">
                                         {% block content-title %}
                                             <h2>Freelance Manager</h2>
                                         {% endblock content-title %}
                                     </h2>
 
+                                    <!-- Content body -->
                                     <div class="content">
                                         {% block content %}
                                             <h3>Freelance Manager</h3>
                                         {% endblock content %}
                                     </div>
-                                </div>
 
+                                    <!-- Buttons at the bottom of content -->
+                                    <div class="content-bottom">
+                                        <div class="row mt-4">
+                                            {% block content-bottom %}
+                                                <div class="col-md-8">
+                                                    <button class="btn btn-sm btn-secondary" onClick="javascript:history.go(-1);">Cancel</button>
+                                                </div>
+                                            {% endblock content-bottom %}
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         {% endblock %}
                     </div>
 
+                    <!-- Info -->
                     <div class="container-body-bottom">
                         {% include 'snippets/message-bottom.html' %}
                     </div>
