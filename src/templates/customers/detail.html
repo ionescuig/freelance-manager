@@ -10,31 +10,142 @@
 {% endblock content-title %}
 
 {% block content %}
-    <div class="text-center">
-        <a href="{% url 'customers:update' pk=customer.pk %}">Update</a> |
-        <a href="{% url 'customers:delete' pk=customer.pk %}">Delete</a>
-        <br>
-    </div>
+    <div class="row">
+            <!-- First column -->
+            <div class="col-md-6" style="border-right: solid 1px darkslategrey">
+                <!-- Personal data -->
+                <div class="row mb-2">
+                    <div class="col-md-4"><small><em>Personal Data</em></small></div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-md-4"><strong>Name</strong></div>
+                    <div class="col-md-8">
+                        {{ customer.name|default:"-" }}
+                    </div>
+                </div>
 
-    <div>
-        <p><strong>Name:</strong> {{ customer.name }}</p>
-        <p><strong>Email:</strong> {{ customer.email }}</p>
-        <p><strong>Phone:</strong> {{ customer.phone }}</p>
-        <br>
-        <p><strong>Company:</strong> {{ customer.company|default:"-" }}</p>
-        <br>
-        <p><strong>Town:</strong> {{ customer.town }}</p>
-        <p><strong>Country:</strong> {{ customer.country }}</p>
-        <p><strong>Address:</strong> {{ customer.address_first_line|default:"-" }}</p>
-        <p><strong>Post Code:</strong> {{ customer.post_code|default:"-" }}</p>
-        <br>
-        <p><strong>Bank:</strong> {{ customer.bank|default:"-" }}</p>
-        <p><strong>Sort Code:</strong> {{ customer.sort_code|default:"-" }}</p>
-        <p><strong>Account no:</strong> {{ customer.account_no|default:"-" }}</p>
-        <p><strong>IBAN:</strong> {{ customer.iban|default:"-" }}</p>
-        <p><strong>Card no:</strong> {{ customer.card_no|default:"-" }}</p>
-        <p><strong>Card Expiry Date:</strong> {{ customer.card_exp_date|default:"-" }}</p>
-        <br>
-        <p><strong>Notes:</strong> {{ customer.notes|default:"-" }}</p>
-    </div>
+                <div class="row mb-2">
+                    <div class="col-md-4"><strong>Email</strong></div>
+                    <div class="col-md-8">
+                        {{ customer.email|default:"-" }}
+                    </div>
+                </div>
+
+                <div class="row mb-2">
+                    <div class="col-md-4"><strong>Phone</strong></div>
+                    <div class="col-md-8">
+                        {{ customer.phone|default:"-" }}
+                    </div>
+                </div>
+
+                <div class="row mb-4">
+                    <div class="col-md-4"><strong>Company</strong></div>
+                    <div class="col-md-8">
+                        {{ customer.company|default:"-" }}
+                    </div>
+                </div>
+
+                <!-- Address -->
+                <div class="row mb-2">
+                    <div class="col-md-4"><small><em>Address</em></small></div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-md-4"><strong>Town</strong></div>
+                    <div class="col-md-8">
+                        {{ customer.town|default:"-" }}
+                    </div>
+                </div>
+
+                <div class="row mb-2">
+                    <div class="col-md-4"><strong>Country</strong></div>
+                    <div class="col-md-8">
+                        {{ customer.country|default:"-" }}
+                    </div>
+                </div>
+
+                <div class="row mb-2">
+                    <div class="col-md-4"><strong>Address</strong></div>
+                    <div class="col-md-8">
+                        {{ customer.address_first_line|default:"-" }}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4"><strong>Post Code</strong></div>
+                    <div class="col-md-8">
+                        {{ customer.post_code|default:"-" }}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Second column -->
+            <div class="col-md-6">
+                <!-- Bank details -->
+                <div class="row mb-2">
+                    <div class="col-md-4"><small><em>Bank details</em></small></div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-md-4"><strong>Bank Name</strong></div>
+                    <div class="col-md-8">
+                        {{ customer.bank|default:"-" }}
+                    </div>
+                </div>
+
+                <div class="row mb-2">
+                    <div class="col-md-4"><strong>Sort Code</strong></div>
+                    <div class="col-md-8">
+                        {{ customer.sort_code|default:"-" }}
+                    </div>
+                </div>
+
+                <div class="row mb-2">
+                    <div class="col-md-4"><strong>Account Number</strong></div>
+                    <div class="col-md-8">
+                        {{ customer.account_no|default:"-" }}
+                    </div>
+                </div>
+
+                <div class="row mb-4">
+                    <div class="col-md-4"><strong>IBAN</strong></div>
+                    <div class="col-md-8">
+                        {{ customer.iban|default:"-" }}
+                    </div>
+                </div>
+
+                <!-- Card details -->
+                <div class="row mb-2">
+                    <div class="col-md-4"><small><em>Card details</em></small></div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-md-4"><strong>Card Number</strong></div>
+                    <div class="col-md-8">
+                        {{ customer.card_no|default:"-" }}
+                    </div>
+                </div>
+
+                <div class="row mb-4">
+                    <div class="col-md-4"><strong>Card Expiry date</strong></div>
+                    <div class="col-md-8">
+                        {{ customer.card_exp_date|default:"-" }}
+                    </div>
+                </div>
+
+                <div class="row mb-2">
+                    <div class="col-md-4"><small><em>Notes</em></small></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        {{ customer.notes|default:"-" }}
+                    </div>
+                </div>
+            </div>
+        </div>
 {% endblock content %}
+
+{% block content-bottom %}
+    <div class="col-md-8">
+        <a class="btn btn-sm btn-success" href="{% url 'customers:update' pk=customer.pk %}">Edit</a>
+        <a class="btn btn-sm btn-danger" href="{% url 'customers:delete' pk=customer.pk %}">Delete</a>
+        <button class="btn btn-sm btn-secondary" onClick="javascript:history.go(-1);">Back</button>
+    </div>
+{% endblock content-bottom %}

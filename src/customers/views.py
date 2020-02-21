@@ -8,7 +8,7 @@ from projects.models import Project
 
 
 class CustomerCreateView(LoginRequiredMixin, CreateView):
-    template_name = 'customers/create.html'
+    template_name = 'customers/create-update.html'
     form_class = CustomerForm
 
     def get_context_data(self, **kwargs):
@@ -28,7 +28,7 @@ class CustomerDetailView(LoginRequiredMixin, DetailView):
 
 
 class CustomerUpdateView(LoginRequiredMixin, UpdateView):
-    template_name = 'customers/update.html'
+    template_name = 'customers/create-update.html'
     form_class = CustomerForm
     queryset = Customer.objects.all()
 

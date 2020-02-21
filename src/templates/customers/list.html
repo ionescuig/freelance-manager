@@ -10,11 +10,25 @@
 {% endblock content-title %}
 
 {% block content %}
-    <div>
-    {% for customer in object_list %}
-        <p>
-            <a href="{% url 'customers:detail' pk=customer.pk %}">{{ customer }}</a></p>
-    {% endfor %}
+    {% if customer_list %}
+        <div class="row mt-2 custom-link">
+            <div class="col-md-3"><strong>Customer</strong></div>
+            <div class="col-md-2 text-center"><strong>Projects</strong></div>
+        </div>
+        {% for customer in object_list %}
+            <div class="row mt-2 custom-link">
+                <div class="col-md-3"><a href="{% url 'customers:detail' pk=customer.pk %}">{{ customer }}</a></div>
+                <div class="col-md-2 text-center"><span class="badge">{{ customer.project_set.count }}</span></div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div class="row mt-2">
+            <div class="col-md-4">There are no customers.</div>
+        </div>
+        <div class="row mt-2 custom-link">
+            <div class="col-md-4"><a href="{% url 'customers:create' %}">Add Customer</a></div>
+        </div>
+    {% endif %}
 
-    </div>
+
 {% endblock content %}

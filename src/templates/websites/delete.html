@@ -15,9 +15,19 @@
         {% csrf_token %}
         {{ form.as_p }}
     </form>
+    <hr>
     {% if website.subscription_set.count or website.password_set.count%}
-        <hr>
-        <p>This website is related to {{ website.subscription_set.count }} subscriptions and {{ website.password_set.count }} passwords.</p>
+        <p>This website is related to <strong>{{ website.subscription_set.count }}</strong>
+            {% if website.subscription_set.count == 1 %}
+                subscription
+            {% else %}
+                subscriptions
+            {% endif %} and <strong>{{ website.password_set.count }}</strong>
+            {% if website.password_set.count == 1 %}
+                password.
+            {% else %}
+                passwords.
+            {% endif %}</p>
 
         {% if website.subscription_set.count %}
             <p>
@@ -44,8 +54,7 @@
         <p>This action will delete all subscriptions and passwords connected to this website!
             <br><strong>This action is irreversible.</strong></p>
     {% else %}
-        <hr>
-        <p>No subscriptions or passwords are related to this website</p>
+        <p>No subscriptions or passwords are related to this website.</p>
     {% endif %}
 {% endblock content %}
 

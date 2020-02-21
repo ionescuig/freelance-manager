@@ -1,0 +1,199 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    FM | New Customer
+{% endblock title %}
+
+{% block content-title %}
+    New Customer
+{% endblock content-title %}
+
+
+{% block content %}
+    <form id="form" method="POST">
+        {% csrf_token %}
+        <div class="row">
+            <!-- First column -->
+            <div class="col-md-6" style="border-right: solid 1px darkslategrey">
+                <!-- Personal data -->
+                <div class="row mb-2">
+                    <div class="col-md-4"><small><em>Personal Data</em></small></div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-md-4"><strong>Name</strong></div>
+                    <div class="col-md-8">
+                        {{ form.name }}
+                        {% if form.name.errors %}
+                            <small class="text-danger ml-2">{{ form.name.errors|striptags }}</small>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="row mb-2">
+                    <div class="col-md-4"><strong>Email</strong></div>
+                    <div class="col-md-8">
+                        {{ form.email }}
+                        {% if form.email.errors %}
+                            <small class="text-danger ml-2">{{ form.email.errors|striptags }}</small>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="row mb-2">
+                    <div class="col-md-4"><strong>Phone</strong></div>
+                    <div class="col-md-8">
+                        {{ form.phone }}
+                        {% if form.phone.errors %}
+                            <small class="text-danger ml-2">{{ form.phone.errors|striptags }}</small>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="row mb-4">
+                    <div class="col-md-4"><strong>Company</strong> <small>(optional)</small></div>
+                    <div class="col-md-8">
+                        {{ form.company }}
+                        {% if form.company.errors %}
+                            <small class="text-danger ml-2">{{ form.company.errors|striptags }}</small>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <!-- Address -->
+                <div class="row mb-2">
+                    <div class="col-md-4"><small><em>Address</em></small></div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-md-4"><strong>Town</strong></div>
+                    <div class="col-md-8">
+                        {{ form.town }}
+                        {% if form.town.errors %}
+                            <small class="text-danger ml-2">{{ form.town.errors|striptags }}</small>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="row mb-2">
+                    <div class="col-md-4"><strong>Country</strong></div>
+                    <div class="col-md-8">
+                        {{ form.country }}
+                        {% if form.country.errors %}
+                            <small class="text-danger ml-2">{{ form.country.errors|striptags }}</small>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="row mb-2">
+                    <div class="col-md-4"><strong>Address</strong> <small>(optional)</small></div>
+                    <div class="col-md-8">
+                        {{ form.address_first_line }}
+                        {% if form.address_first_line.errors %}
+                            <small class="text-danger ml-2">{{ form.address_first_line.errors|striptags }}</small>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4"><strong>Post Code</strong> <small>(optional)</small></div>
+                    <div class="col-md-8">
+                        {{ form.post_code }}
+                        {% if form.post_code.errors %}
+                            <small class="text-danger ml-2">{{ form.post_code.errors|striptags }}</small>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Second column -->
+            <div class="col-md-6">
+                <!-- Bank details -->
+                <div class="row mb-2">
+                    <div class="col-md-4"><small><em>Bank details (optional)</em></small></div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-md-4"><strong>Bank Name</strong></div>
+                    <div class="col-md-8">
+                        {{ form.bank }}
+                        {% if form.bank.errors %}
+                            <small class="text-danger ml-2">{{ form.bank.errors|striptags }}</small>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="row mb-2">
+                    <div class="col-md-4"><strong>Sort Code</strong></div>
+                    <div class="col-md-8">
+                        {{ form.sort_code }}
+                        {% if form.sort_code.errors %}
+                            <small class="text-danger ml-2">{{ form.sort_code.errors|striptags }}</small>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="row mb-2">
+                    <div class="col-md-4"><strong>Account Number</strong></div>
+                    <div class="col-md-8">
+                        {{ form.account_no }}
+                        {% if form.account_no.errors %}
+                            <small class="text-danger ml-2">{{ form.account_no.errors|striptags }}</small>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="row mb-4">
+                    <div class="col-md-4"><strong>IBAN</strong> <small>(optional)</small></div>
+                    <div class="col-md-8">
+                        {{ form.iban }}
+                        {% if form.iban.errors %}
+                            <small class="text-danger ml-2">{{ form.iban.errors|striptags }}</small>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <!-- Card details -->
+                <div class="row mb-2">
+                    <div class="col-md-4"><small><em>Card details (optional)</em></small></div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-md-4"><strong>Card Number</strong></div>
+                    <div class="col-md-8">
+                        {{ form.card_no }}
+                        {% if form.card_no.errors %}
+                            <small class="text-danger ml-2">{{ form.card_no.errors|striptags }}</small>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="row mb-4">
+                    <div class="col-md-4"><strong>Card Expiry date</strong></div>
+                    <div class="col-md-8">
+                        {{ form.card_exp_date }}
+                        {% if form.card_exp_date.errors %}
+                            <small class="text-danger ml-2">{{ form.card_exp_date.errors|striptags }}</small>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="row mb-2">
+                    <div class="col-md-4"><small><em>Notes</em></small></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        {{ form.notes }}
+                        {% if form.notes.errors %}
+                            <small class="text-danger ml-2">{{ form.notes.errors|striptags }}</small>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+{% endblock content %}
+
+{% block content-bottom %}
+    <div class="col-md-8">
+        <input class="btn btn-sm btn-success" type="submit" form="form" value="Save">
+        <button class="btn btn-sm btn-secondary" onClick="javascript:history.go(-1);">Cancel</button>
+    </div>
+{% endblock content-bottom %}

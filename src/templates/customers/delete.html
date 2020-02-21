@@ -11,22 +11,34 @@
 
 {% block content %}
     <p><strong>Are you sure you want to delete {{ customer }}?</strong></p>
-    <form method="POST">
+    <form id="form" method="POST">
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="submit" value="Delete">
-        <a href="{% url 'customers:detail' pk=customer.pk %}">Cancel</a>
     </form>
     <hr>
-    <p>This customer has {{ customer.project_set.count }} projects.</p>
-    <ul>
-        {% for project in customer.project_set.all %}
-            <li><a href="{% url 'projects:detail' pk=project.pk %}">{{ project }}</a></li>
-        {% endfor %}
-
-    </ul>
     {% if customer.project_set.count %}
+        <p>This customer has {{ customer.project_set.count }}
+            {% if customer.project_set.count > 1 %}
+                projects.
+            {% else %}
+                project.
+            {% endif %}
+        </p>
+        <ul>
+            {% for project in customer.project_set.all %}
+                <li class="custom-link"><a href="{% url 'projects:detail' pk=project.pk %}">{{ project }}</a></li>
+            {% endfor %}
+        </ul>
         <p>This action will delete all projects, subscriptions and passwords connected to this user!
             <br><strong>This action is irreversible.</strong></p>
+    {% else %}
+        <p>No projects are connected to this customer.</p>
     {% endif %}
 {% endblock content %}
+
+{% block content-bottom %}
+    <div class="col-md-8">
+        <input class="btn btn-sm btn-danger" type="submit" form="form" value="Delete">
+        <button class="btn btn-sm btn-secondary" onClick="javascript:history.go(-1);">Cancel</button>
+    </div>
+{% endblock content-bottom %}

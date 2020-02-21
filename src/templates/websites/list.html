@@ -10,24 +10,34 @@
 {% endblock content-title %}
 
 {% block content %}
-    <div class="row mb-2 mt-2">
-        <div class="col-md-2"><strong>Name</strong></div>
-        <div class="col-md-4"><strong>URL</strong></div>
-    </div>
-    {% for website in object_list %}
-        <div class="row">
-            <div class="col-md-2">
-                {{ website.name }}
-            </div>
-            <div class="col-md-4">
-                {{ website.url }}
-            </div>
-            <div class="col-md-4 mb-1">
-                <a class="btn btn-sm btn-success" href="{% url 'websites:update' pk=website.pk %}">Edit</a>
-                <a class="btn btn-sm btn-danger" href="{% url 'websites:delete' pk=website.pk %}">Delete</a>
-            </div>
+    {% if website_list %}
+        <div class="row mb-2 mt-2">
+            <div class="col-md-2"><strong>Name</strong></div>
+            <div class="col-md-4"><strong>URL</strong></div>
         </div>
-    {% endfor %}
+        {% for website in object_list %}
+            <div class="row">
+                <div class="col-md-2">
+                    {{ website.name }}
+                </div>
+                <div class="col-md-4">
+                    {{ website.url }}
+                </div>
+                <div class="col-md-4 mb-1">
+                    <a class="btn btn-sm btn-success" href="{% url 'websites:update' pk=website.pk %}">Edit</a>
+                    <a class="btn btn-sm btn-danger" href="{% url 'websites:delete' pk=website.pk %}">Delete</a>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div class="row mt-2">
+            <div class="col-md-4">There are no websites.</div>
+        </div>
+        <div class="row mt-2 custom-link">
+            <div class="col-md-4"><a href="{% url 'websites:create' %}">Add Website</a></div>
+        </div>
+    {% endif %}
+
 {% endblock content %}
 
 {% block content-bottom %}
