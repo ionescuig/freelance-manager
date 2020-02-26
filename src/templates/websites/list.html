@@ -16,14 +16,14 @@
             <div class="col-md-4"><strong>URL</strong></div>
         </div>
         {% for website in object_list %}
-            <div class="row">
+            <div class="row mb-1">
                 <div class="col-md-2">
                     {{ website.name }}
                 </div>
                 <div class="col-md-4">
                     {{ website.url }}
                 </div>
-                <div class="col-md-4 mb-1">
+                <div class="col-md-4">
                     <a class="btn btn-sm btn-success" href="{% url 'websites:update' pk=website.pk %}">Edit</a>
                     <a class="btn btn-sm btn-danger" href="{% url 'websites:delete' pk=website.pk %}">Delete</a>
                 </div>

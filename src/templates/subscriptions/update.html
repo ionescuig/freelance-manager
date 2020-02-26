@@ -10,13 +10,63 @@
 {% endblock content-title %}
 
 {% block content %}
-    <div class="text-center">
-        <p style="color: red">To Do: Remove options for project and website</p>
-        <form method="POST">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <input type="submit" value="Update">
-            <a href="{% url 'subscriptions:detail' pk=subscription.pk %}">Cancel</a>
-        </form>
-    </div>
+        <form id="form" method="POST">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row mb-2">
+                    <div class="col-md-4"><strong>Project</strong></div>
+                    <div class="col-md-8">
+                        {{ subscription.project|default:"-" }}
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-4"><strong>Website</strong></div>
+                    <div class="col-md-8">
+                        {{ subscription.website|default:"-" }}
+                    </div>
+                </div>
+
+                <div class="row mb-2">
+                    <div class="col-md-4"><strong>Created Date</strong></div>
+                    <div class="col-md-8">
+                        {{ form.date_created }}
+                        {% if form.date_created.errors %}
+                            <small class="text-danger ml-2">{{ form.date_created.errors|striptags }}</small>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="row mb-2">
+                    <div class="col-md-4"><strong>Renewal Date</strong></div>
+                    <div class="col-md-8">
+                        {{ form.date_renewal }}
+                        {% if form.date_renewal.errors %}
+                            <small class="text-danger ml-2">{{ form.date_renewal.errors|striptags }}</small>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="row mb-2">
+                    <div class="col-md-2"><strong>Notes</strong></div>
+                    <div class="col-md-10">
+                        {{ form.notes }}
+                        {% if form.notes.errors %}
+                            <small class="text-danger ml-2">{{ form.notes.errors|striptags }}</small>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
 {% endblock content %}
+
+{% block content-bottom %}
+    <div class="col-md-8">
+        <input class="btn btn-sm btn-success" type="submit" form="form" value="Save">
+        <button class="btn btn-sm btn-secondary" onClick="javascript:history.go(-1);">Back</button>
+    </div>
+{% endblock content-bottom %}

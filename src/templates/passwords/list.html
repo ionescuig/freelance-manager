@@ -16,16 +16,15 @@
             <div class="col-md-4"><strong>Website</strong></div>
         </div>
         {% for password in object_list %}
-            <div class="row custom-link">
+            <div class="row custom-link mb-1">
                 <div class="col-md-2">
                     {{ password.project.name }}
                 </div>
                 <div class="col-md-2">
                     {{ password.website.name }}
                 </div>
-                <div class="col-md-4 mb-1">
+                <div class="col-md-4">
                     <a href="{% url 'passwords:detail' pk=password.pk %}">View password</a>
-
                 </div>
             </div>
         {% endfor %}

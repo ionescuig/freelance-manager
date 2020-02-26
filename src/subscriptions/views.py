@@ -2,7 +2,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import CreateView, DeleteView, DetailView, ListView, UpdateView
 from django.urls import reverse_lazy
 
-from .forms import SubscriptionForm
+from .forms import SubscriptionForm, SubscriptionUpdateForm
 from .models import Subscription
 
 
@@ -28,7 +28,7 @@ class SubscriptionDetailView(LoginRequiredMixin, DetailView):
 
 class SubscriptionUpdateView(LoginRequiredMixin, UpdateView):
     template_name = 'subscriptions/update.html'
-    form_class = SubscriptionForm
+    form_class = SubscriptionUpdateForm
     queryset = Subscription.objects.all()
 
     def get_context_data(self, **kwargs):
@@ -81,7 +81,7 @@ def date_renewal_default():
 
 
 class SubscriptionExpireView(LoginRequiredMixin, ListView):
-    template_name = 'subscriptions/list-expire.html'
+    template_name = 'subscriptions/list.html'
     model = Subscription
     queryset = Subscription.objects.filter(date_renewal__lte=date_renewal_default()).order_by('date_renewal')
 

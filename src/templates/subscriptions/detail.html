@@ -10,17 +10,50 @@
 {% endblock content-title %}
 
 {% block content %}
-    <div class="text-center">
-        <a href="{% url 'subscriptions:update' pk=subscription.pk %}">Update</a> |
-        <a href="{% url 'subscriptions:delete' pk=subscription.pk %}">Delete</a>
-        <br>
-    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="row mb-2">
+                <div class="col-md-4"><strong>Project</strong></div>
+                <div class="col-md-8">
+                    {{ subscription.project|default:"-" }}
+                </div>
+            </div>
 
-    <div>
-        <p><strong>Project:</strong> {{ subscription.project }}</p>
-        <p><strong>Website:</strong> {{ subscription.website }}</p>
-        <p><strong>Created Date:</strong> {{ subscription.date_created }}</p>
-        <p><strong>Renewal Date:</strong> {{ subscription.date_renewal }}</p>
-        <p><strong>Notes:</strong> {{ subscription.notes|default:"-" }}</p>
+            <div class="row mb-4">
+                <div class="col-md-4"><strong>Website</strong></div>
+                <div class="col-md-8">
+                    {{ subscription.website|default:"-" }}
+                </div>
+            </div>
+
+            <div class="row mb-2">
+                <div class="col-md-4"><strong>Created Date</strong></div>
+                <div class="col-md-8">
+                    {{ subscription.date_created|default:"-" }}
+                </div>
+            </div>
+
+            <div class="row mb-4">
+                <div class="col-md-4"><strong>Renewal Date</strong></div>
+                <div class="col-md-8">
+                    {{ subscription.date_renewal|default:"-" }}
+                </div>
+            </div>
+
+            <div class="row mb-2">
+                <div class="col-md-4"><strong>Notes</strong></div>
+                <div class="col-md-8">
+                    {{ subscription.notes|default:"-" }}
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock content %}
+
+{% block content-bottom %}
+    <div class="col-md-8">
+        <a class="btn btn-sm btn-success" href="{% url 'subscriptions:update' pk=subscription.pk %}">Update</a>
+        <a class="btn btn-sm btn-danger" href="{% url 'subscriptions:delete' pk=subscription.pk %}">Delete</a>
+        <button class="btn btn-sm btn-secondary" onClick="javascript:history.go(-1);">Back</button>
+    </div>
+{% endblock content-bottom %}

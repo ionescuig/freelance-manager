@@ -10,20 +10,46 @@
 {% endblock content-title %}
 
 {% block content %}
-    <table>
-        <tr>
-            <th style="padding-right: 75px">Project</th>
-            <th style="padding-right: 75px">Website</th>
-            <th style="padding-right: 75px">Created Date</th>
-            <th>Renewal Date</th>
-        </tr>
+    {% if subscription_list %}
+        <div class="row mb-2 mt-2">
+            <div class="col-md-2"><strong>Project</strong></div>
+            <div class="col-md-2"><strong>Website</strong></div>
+            <div class="col-md-2"><strong>Created Date</strong></div>
+            <div class="col-md-2"><strong>Renewal Date</strong></div>
+        </div>
         {% for subscription in object_list %}
-            <tr>
-                <td><a href="{% url 'projects:detail' pk=subscription.project.pk %}">{{ subscription.project.name }}</a></td>
-                <td><a href="{% url 'subscriptions:detail' pk=subscription.pk %}">{{ subscription.website.name }}</a></td>
-                <td>{{ subscription.date_created }}</td>
-                <td>{{ subscription.date_renewal }}</td>
-            </tr>
+            <div class="row mb-1">
+                <div class="col-md-2 custom-link">
+                    <a href="{% url 'projects:detail' pk=subscription.project.pk %}">{{ subscription.project.name }}</a>
+                </div>
+                <div class="col-md-2 custom-link">
+                    {{ subscription.website.name }}
+                </div>
+                <div class="col-md-2">
+                    {{ subscription.date_created }}
+                </div>
+                <div class="col-md-2">
+                    {{ subscription.date_renewal }}
+                </div>
+                <div class="col-md-4">
+                    <a class="btn btn-sm btn-success" href="{% url 'subscriptions:update' pk=subscription.pk %}">Edit</a>
+                    <a class="btn btn-sm btn-danger" href="{% url 'subscriptions:delete' pk=subscription.pk %}">Delete</a>
+                </div>
+            </div>
         {% endfor %}
-    </table>
+    {% else %}
+        <div class="row mt-2">
+            <div class="col-md-4">There are no subscriptions.</div>
+        </div>
+        <div class="row mt-2 custom-link">
+            <div class="col-md-4"><a href="{% url 'subscription:create' %}">Add Subscription</a></div>
+        </div>
+    {% endif %}
 {% endblock content %}
+
+{% block content-bottom %}
+    <div class="col-md-8">
+        <a class="btn btn-sm btn-secondary" href="{% url 'home' %}">Home</a>
+        <button class="btn btn-sm btn-secondary" onClick="javascript:history.go(-1);">Back</button>
+    </div>
+{% endblock content-bottom %}

@@ -10,11 +10,16 @@
 {% endblock content-title %}
 
 {% block content %}
-    Are you sure you want to delete subscription: {{ subscription }}
-    <form method="POST">
+    <p><strong>Are you sure you want to delete subscription: {{ subscription }}?</strong></p>
+    <form id="form" method="POST">
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="submit" value="Delete">
-        <a href="{% url 'subscriptions:detail' pk=subscription.pk %}">Cancel</a>
     </form>
 {% endblock content %}
+
+{% block content-bottom %}
+    <div class="col-md-8">
+        <input class="btn btn-sm btn-danger" type="submit" form="form" value="Delete">
+        <button class="btn btn-sm btn-secondary" onClick="javascript:history.go(-1);">Cancel</button>
+    </div>
+{% endblock content-bottom %}
