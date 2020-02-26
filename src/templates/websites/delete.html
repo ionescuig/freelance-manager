@@ -10,7 +10,7 @@
 {% endblock content-title %}
 
 {% block content %}
-    <p><strong>Are you sure you want to delete {{ website }}?</strong></p>
+    <p><strong>Are you sure you want to delete website: {{ website }}?</strong></p>
     <form id="form" method="POST">
         {% csrf_token %}
         {{ form.as_p }}

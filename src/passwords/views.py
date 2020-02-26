@@ -2,13 +2,14 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import CreateView, DeleteView, DetailView, ListView, UpdateView
 from django.urls import reverse_lazy
 
-from .forms import PasswordForm
+from .forms import PasswordForm, PasswordUpdateForm
 from .models import Password
 
 
 class PasswordCreateView(LoginRequiredMixin, CreateView):
     template_name = 'passwords/create.html'
     form_class = PasswordForm
+    success_url = reverse_lazy('passwords:list')
 
     def get_context_data(self, **kwargs):
         context = super(PasswordCreateView, self).get_context_data()
@@ -28,7 +29,7 @@ class PasswordDetailView(LoginRequiredMixin, DetailView):
 
 class PasswordUpdateView(LoginRequiredMixin, UpdateView):
     template_name = 'passwords/update.html'
-    form_class = PasswordForm
+    form_class = PasswordUpdateForm
     queryset = Password.objects.all()
 
     def get_context_data(self, **kwargs):

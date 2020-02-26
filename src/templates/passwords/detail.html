@@ -52,7 +52,7 @@
 
 {% block content-bottom %}
     <div class="col-md-8">
-        <a class="btn btn-sm btn-success" href="{% url 'passwords:update' pk=password.pk %}">Edit</a>
+        <a class="btn btn-sm btn-success" href="{% url 'passwords:update' pk=password.pk %}">Update</a>
         <a class="btn btn-sm btn-danger" href="{% url 'passwords:delete' pk=password.pk %}">Delete</a>
         <button class="btn btn-sm btn-secondary" onClick="javascript:history.go(-1);">Back</button>
     </div>
