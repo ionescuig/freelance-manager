@@ -10,17 +10,38 @@
 {% endblock content-title %}
 
 {% block content %}
-    <table>
-        <tr>
-            <th style="padding-right: 75px">Project</th>
-            <th>Website</th>
-
-        </tr>
+    {% if password_list %}
+        <div class="row mb-2 mt-2">
+            <div class="col-md-2"><strong>Project</strong></div>
+            <div class="col-md-4"><strong>Website</strong></div>
+        </div>
         {% for password in object_list %}
-            <tr>
-                <td><a href="{% url 'projects:detail' pk=password.project.pk %}">{{ password.project.name }}</a></td>
-                <td><a href="{% url 'passwords:detail' pk=password.pk %}">{{ password.website.name }}</a></td>
-            </tr>
+            <div class="row custom-link">
+                <div class="col-md-2">
+                    {{ password.project.name }}
+                </div>
+                <div class="col-md-2">
+                    {{ password.website.name }}
+                </div>
+                <div class="col-md-4 mb-1">
+                    <a href="{% url 'passwords:detail' pk=password.pk %}">View password</a>
+
+                </div>
+            </div>
         {% endfor %}
-    </table>
+    {% else %}
+        <div class="row mt-2">
+            <div class="col-md-4">There are no passwords.</div>
+        </div>
+        <div class="row mt-2 custom-link">
+            <div class="col-md-4"><a href="{% url 'passwords:create' %}">Add Password</a></div>
+        </div>
+    {% endif %}
 {% endblock content %}
+
+{% block content-bottom %}
+    <div class="col-md-8">
+        <a class="btn btn-sm btn-secondary" href="{% url 'home' %}">Home</a>
+        <button class="btn btn-sm btn-secondary" onClick="javascript:history.go(-1);">Back</button>
+    </div>
+{% endblock content-bottom %}

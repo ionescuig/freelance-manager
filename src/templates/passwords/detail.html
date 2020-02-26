@@ -10,17 +10,50 @@
 {% endblock content-title %}
 
 {% block content %}
-    <div class="text-center">
-        <a href="{% url 'passwords:update' pk=password.pk %}">Update</a> |
-        <a href="{% url 'passwords:delete' pk=password.pk %}">Delete</a>
-        <br>
-    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="row mb-2">
+                <div class="col-md-4"><strong>Project</strong></div>
+                <div class="col-md-8">
+                    {{ password.project|default:"-" }}
+                </div>
+            </div>
 
-    <div>
-        <p><strong>Project:</strong> {{ password.project }}</p>
-        <p><strong>Website:</strong> {{ password.website }}</p>
-        <p><strong>Username:</strong> {{ password.username }}</p>
-        <p><strong>Password:</strong> {{ password.password }}</p>
-        <p><strong>Notes:</strong> {{ password.notes|default:"-" }}</p>
+            <div class="row mb-4">
+                <div class="col-md-4"><strong>Website</strong></div>
+                <div class="col-md-8">
+                    {{ password.website|default:"-" }}
+                </div>
+            </div>
+
+            <div class="row mb-2">
+                <div class="col-md-4"><strong>Username</strong></div>
+                <div class="col-md-8">
+                    {{ password.username|default:"-" }}
+                </div>
+            </div>
+
+            <div class="row mb-4">
+                <div class="col-md-4"><strong>Password</strong></div>
+                <div class="col-md-8">
+                    {{ password.password|default:"-" }}
+                </div>
+            </div>
+
+            <div class="row mb-2">
+                <div class="col-md-4"><strong>Notes</strong></div>
+                <div class="col-md-8">
+                    {{ password.notes|default:"-" }}
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock content %}
+
+{% block content-bottom %}
+    <div class="col-md-8">
+        <a class="btn btn-sm btn-success" href="{% url 'passwords:update' pk=password.pk %}">Edit</a>
+        <a class="btn btn-sm btn-danger" href="{% url 'passwords:delete' pk=password.pk %}">Delete</a>
+        <button class="btn btn-sm btn-secondary" onClick="javascript:history.go(-1);">Back</button>
+    </div>
+{% endblock content-bottom %}
