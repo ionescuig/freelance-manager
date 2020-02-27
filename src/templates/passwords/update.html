@@ -32,7 +32,7 @@
                     <div class="col-md-4"><strong>Username</strong></div>
                     <div class="col-md-8">
                         {{ form.username }}
-                        {% if form.name.errors %}
+                        {% if form.username.errors %}
                             <small class="text-danger ml-2">{{ form.username.errors|striptags }}</small>
                         {% endif %}
                     </div>

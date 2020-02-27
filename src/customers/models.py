@@ -29,7 +29,7 @@ class Customer(models.Model):
         validators=[RegexValidator(regex='^\d{8}$', message='Invalid account number. If the account number has less than 8 digits, please add 0(zero) in front.', code='nomatch')],
         max_length=8, blank=True)
     iban            = models.CharField(
-        validators=[RegexValidator(regex='^[0-9A-Z]{15,32}$', message='Invalid IBAN. Please use CAPITAL LETTERS.', code='nomatch')],
+        validators=[RegexValidator(regex='^[0-9A-Z]{15,32}$', message='Invalid IBAN. Must be between 15 and 32 characters. Please use CAPITAL LETTERS.', code='nomatch')],
         max_length=32, blank=True)
     card_no         = models.CharField(
         validators=[RegexValidator(regex='^\d{16}$', message='Invalid card number', code='nomatch')],

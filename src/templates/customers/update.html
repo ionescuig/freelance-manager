@@ -2,11 +2,11 @@
 {% load static %}
 
 {% block title %}
-    FM | New Customer
+    FM | Customer Update
 {% endblock title %}
 
 {% block content-title %}
-    New Customer
+    Customer Update: {{ customer }}
 {% endblock content-title %}
 
 
@@ -142,7 +142,7 @@
                 </div>
 
                 <div class="row mb-4">
-                    <div class="col-md-4"><strong>IBAN</strong> <small>(optional)</small></div>
+                    <div class="col-md-4"><strong>IBAN</strong></div>
                     <div class="col-md-8">
                         {{ form.iban }}
                         {% if form.iban.errors %}

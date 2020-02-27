@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    FM | Website Update
+{% endblock title %}
+
+{% block content-title %}
+    Website Update: {{ website }}
+{% endblock content-title %}
+
+{% block content %}
+    <form id="form" method="POST">
+        {% csrf_token %}
+        <div class="row mb-2">
+            <div class="col-md-2"><strong>Name</strong></div>
+            <div class="col-md-4">
+                {{ form.name }}
+                {% if form.name.errors %}
+                    <small class="text-danger ml-2">{{ form.name.errors|striptags }}</small>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="row mb-2">
+            <div class="col-md-2"><strong>URL</strong></div>
+            <div class="col-md-4">
+                {{ form.url }}
+                {% if form.url.errors %}
+                    <small class="text-danger ml-2">{{ form.url.errors|striptags }}</small>
+                {% endif %}
+            </div>
+        </div>
+    </form>
+{% endblock content %}
+
+{% block content-bottom %}
+    <div class="col-md-8">
+        <input class="btn btn-sm btn-success" type="submit" form="form" value="Save">
+        <button class="btn btn-sm btn-secondary" onClick="javascript:history.go(-1);">Cancel</button>
+    </div>
+{% endblock content-bottom %}

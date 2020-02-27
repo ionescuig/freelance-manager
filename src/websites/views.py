@@ -7,7 +7,7 @@ from .models import Website
 
 
 class WebsiteCreateView(LoginRequiredMixin, CreateView):
-    template_name = 'websites/create-update.html'
+    template_name = 'websites/create.html'
     form_class = WebsiteForm
     success_url = reverse_lazy('websites:list')
 
@@ -18,7 +18,7 @@ class WebsiteCreateView(LoginRequiredMixin, CreateView):
 
 
 class WebsiteUpdateView(LoginRequiredMixin, UpdateView):
-    template_name = 'websites/create-update.html'
+    template_name = 'websites/update.html'
     form_class = WebsiteForm
     queryset = Website.objects.all()
     success_url = reverse_lazy('websites:list')
