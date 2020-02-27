@@ -6,6 +6,11 @@ from .forms import SubscriptionForm, SubscriptionUpdateForm
 from .models import Subscription
 
 
+def date_renewal_default():
+    from datetime import date, timedelta
+    return date.today()+timedelta(days=31)
+
+
 class SubscriptionCreateView(LoginRequiredMixin, CreateView):
     template_name = 'subscriptions/create.html'
     form_class = SubscriptionForm
@@ -44,6 +49,7 @@ class SubscriptionListView(LoginRequiredMixin, ListView):
     def get_context_data(self, **kwargs):
         context = super(SubscriptionListView, self).get_context_data()
         context['linkActive'] = 'Subscriptions'
+        context['subscription_to_renew'] = date_renewal_default()
         return context
 
 
@@ -75,11 +81,6 @@ class SubscriptionDeleteView(LoginRequiredMixin, DeleteView):
         return context
 
 
-def date_renewal_default():
-    from datetime import date, timedelta
-    return date.today()+timedelta(days=31)
-
-
 class SubscriptionExpireView(LoginRequiredMixin, ListView):
     template_name = 'subscriptions/list.html'
     model = Subscription
@@ -88,4 +89,5 @@ class SubscriptionExpireView(LoginRequiredMixin, ListView):
     def get_context_data(self, **kwargs):
         context = super(SubscriptionExpireView, self).get_context_data()
         context['linkActive'] = 'Subscriptions'
+        context['subscription_to_renew'] = date_renewal_default()
         return context
