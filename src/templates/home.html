@@ -24,23 +24,23 @@
 {% block content %}
     <div class="row mt-2 mb-2 custom-link">
         <div class="col-md-2"><a href="{% url 'customers:list' %}">Customers</a></div>
-        <div class="col-md-2"><span class="badge">{{ customers.count }}</span></div>
+        <div class="col-md-1 text-center"><span class="badge">{{ customers.count }}</span></div>
     </div>
     <div class="row mb-2 custom-link">
         <div class="col-md-2"><a href="{% url 'projects:list' %}">Projects</a></div>
-        <div class="col-md-2"><span class="badge">{{ projects.count }}</span></div>
+        <div class="col-md-1 text-center"><span class="badge">{{ projects.count }}</span></div>
     </div>
     <div class="row mb-2 custom-link">
         <div class="col-md-2"><a href="{% url 'subscriptions:list' %}">Subscriptions</a></div>
-        <div class="col-md-2"><span class="badge">{{ subscriptions.count }}</span></div>
+        <div class="col-md-1 text-center"><span class="badge">{{ subscriptions.count }}</span></div>
     </div>
     <div class="row mb-2 custom-link">
         <div class="col-md-2"><a href="{% url 'passwords:list' %}">Passwords</a></div>
-        <div class="col-md-2"><span class="badge">{{ passwords.count }}</span></div>
+        <div class="col-md-1 text-center"><span class="badge">{{ passwords.count }}</span></div>
     </div>
     <div class="row mb-2 custom-link">
         <div class="col-md-2"><a href="{% url 'websites:list' %}">Websites</a></div>
-        <div class="col-md-2"><span class="badge">{{ websites.count }}</span></div>
+        <div class="col-md-1 text-center"><span class="badge">{{ websites.count }}</span></div>
     </div>
 {% endblock content %}
 
