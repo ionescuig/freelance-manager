@@ -10,34 +10,67 @@
 {% endblock content-title %}
 
 {% block content %}
-    <div class="text-center">
-        <a href="{% url 'projects:update' pk=project.pk %}">Update</a> |
-        <a href="{% url 'projects:delete' pk=project.pk %}">Delete</a>
-        <br>
-    </div>
+    <div class="row mb-2">
+        <!-- General data -->
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-4">
+                    <strong>Project:</strong>
+                </div>
+                <div class="col-md-7">
+                    {{ project.name }}
+                </div>
+            </div>
+            <div class="row mb-4">
+                <div class="col-md-4">
+                    <strong>Customer:</strong>
+                </div>
+                <div class="col-md-7">
+                    <div class="custom-link">
+                        <a href="{% url 'customers:detail' pk=project.customer.pk %}">{{ project.customer }}</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <strong>Notes:</strong>
+                </div>
+                <div class="col-md-7">
+                    {{ project.notes|default:"-" }}
+                </div>
+            </div>
+        </div>
 
-    <div>
-        <p><strong>Name:</strong> {{ project.name }}</p>
-        <p><strong>Customer:</strong> {{ project.customer.name }}</p>
-        <p><strong>Notes:</strong> {{ project.notes|default:"-" }}</p>
-        <br>
-        <p>
+        <!-- Subscriptions -->
+        <div class="col-md-3 text-center">
             <strong>Subscriptions:</strong>
-            <ul>
-                {% for subscription in project.subscription_set.all %}
-                    <li><a href="{% url 'subscriptions:detail' pk=subscription.pk %}">{{ subscription.website }}</a></li>
-                {% endfor %}
-            </ul>
-        </p>
-        <br>
-        <p>
-            <strong>Passwords:</strong>
-            <ul>
-                {% for password in project.password_set.all %}
-                    <li><a href="{% url 'passwords:detail' pk=password.pk %}">{{ password.website }}</a></li>
-                {% endfor %}
-            </ul>
-        </p>
+            {% for subscription in project.subscription_set.all %}
+                <div class="custom-link">
+                    <a href="{% url 'subscriptions:detail' pk=subscription.pk %}">{{ subscription.website }}</a>
+                </div>
+            {% endfor %}
+        </div>
 
+        <!-- Passwords -->
+        <div class="col-md-3 text-center">
+            <strong>Passwords:</strong>
+            {% for password in project.password_set.all %}
+                <div class="custom-link">
+                    <a href="{% url 'passwords:detail' pk=password.pk %}">{{ password.website }}</a>
+                </div>
+            {% endfor %}
+        </div>
     </div>
 {% endblock content %}
+
+{% block content-bottom %}
+    <div class="col-md-6">
+        <a class="btn btn-sm btn-success" href="{% url 'projects:update' pk=project.pk %}">Edit</a>
+        <a class="btn btn-sm btn-danger" href="{% url 'projects:delete' pk=project.pk %}">Delete</a>
+        <button class="btn btn-sm btn-secondary" onClick="javascript:history.go(-1);">Back</button>
+    </div>
+    <div class="col-md-6 text-right">
+        <a class="btn btn-sm btn-success" href="{% url 'subscriptions:create' %}">New Subscription</a>
+        <a class="btn btn-sm btn-success" href="{% url 'passwords:create' %}">New Password</a>
+    </div>
+{% endblock content-bottom %}

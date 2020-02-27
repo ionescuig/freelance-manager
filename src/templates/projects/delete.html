@@ -10,39 +10,96 @@
 {% endblock content-title %}
 
 {% block content %}
-    <p><strong>Are you sure you want to delete {{ project }}?</strong></p>
-    <form method="POST">
+    <p><strong>Are you sure you want to delete website: {{ project }}?</strong></p>
+    <form id="form" method="POST">
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="submit" value="Delete">
-        <a href="{% url 'projects:detail' pk=project.pk %}">Cancel</a>
     </form>
     <hr>
-    <p>This project has {{ project.subscription_set.count }} subscriptions and {{ project.password_set.count }} passwords.</p>
-    {% if project.subscription_set.count %}
-        <p>
-            <strong>Subscriptions:</strong>
-            <ul>
-                {% for subscription in project.subscription_set.all %}
-                    <li><a href="{% url 'subscriptions:detail' pk=subscription.pk %}">{{ subscription.website }}</a></li>
-                {% endfor %}
-            </ul>
-        </p>
-    {% endif %}
+    {% if project.subscription_set.count or project.password_set.count%}
+        <p>This project is related to <strong>{{ project.subscription_set.count }}</strong>
+            {% if project.subscription_set.count == 1 %}
+                subscription
+            {% else %}
+                subscriptions
+            {% endif %} and <strong>{{ project.password_set.count }}</strong>
+            {% if website.password_set.count == 1 %}
+                password.
+            {% else %}
+                passwords.
+            {% endif %}</p>
 
-    {% if project.password_set.count %}
-        <p>
-            <strong>Passwords:</strong>
-            <ul>
-                {% for password in project.password_set.all %}
-                    <li><a href="{% url 'passwords:detail' pk=password.pk %}">{{ password.website }}</a></li>
-                {% endfor %}
-            </ul>
-        </p>
-    {% endif %}
+        {% if project.subscription_set.count %}
+            <p>
+                <strong>Subscriptions:</strong>
+                <ul>
+                    {% for subscription in project.subscription_set.all %}
+                        <li class="custom-link"><a href="{% url 'subscriptions:detail' pk=subscription.pk %}">{{ subscription.website }}</a></li>
+                    {% endfor %}
+                </ul>
+            </p>
+        {% endif %}
 
-    {% if project.subscription_set.count or project.password_set.count %}
+        {% if project.password_set.count %}
+            <p>
+                <strong>Passwords:</strong>
+                <ul>
+                    {% for password in project.password_set.all %}
+                        <li class="custom-link"><a href="{% url 'passwords:detail' pk=password.pk %}">{{ password.website }}</a></li>
+                    {% endfor %}
+                </ul>
+            </p>
+        {% endif %}
+
         <p>This action will delete all subscriptions and passwords connected to this project!
             <br><strong>This action is irreversible.</strong></p>
+    {% else %}
+        <p>No subscriptions or passwords are related to this project.</p>
     {% endif %}
 {% endblock content %}
+
+{% block content-bottom %}
+    <div class="col-md-8">
+        <input class="btn btn-sm btn-danger" type="submit" form="form" value="Delete">
+        <button class="btn btn-sm btn-secondary" onClick="javascript:history.go(-1);">Cancel</button>
+    </div>
+{% endblock content-bottom %}
+
+
+{#{% block content %}#}
+{#    <p><strong>Are you sure you want to delete {{ project }}?</strong></p>#}
+{#    <form method="POST">#}
+{#        {% csrf_token %}#}
+{#        {{ form.as_p }}#}
+{#        <input type="submit" value="Delete">#}
+{#        <a href="{% url 'projects:detail' pk=project.pk %}">Cancel</a>#}
+{#    </form>#}
+{#    <hr>#}
+{#    <p>This project has {{ project.subscription_set.count }} subscriptions and {{ project.password_set.count }} passwords.</p>#}
+{#    {% if project.subscription_set.count %}#}
+{#        <p>#}
+{#            <strong>Subscriptions:</strong>#}
+{#            <ul>#}
+{#                {% for subscription in project.subscription_set.all %}#}
+{#                    <li><a href="{% url 'subscriptions:detail' pk=subscription.pk %}">{{ subscription.website }}</a></li>#}
+{#                {% endfor %}#}
+{#            </ul>#}
+{#        </p>#}
+{#    {% endif %}#}
+{##}
+{#    {% if project.password_set.count %}#}
+{#        <p>#}
+{#            <strong>Passwords:</strong>#}
+{#            <ul>#}
+{#                {% for password in project.password_set.all %}#}
+{#                    <li><a href="{% url 'passwords:detail' pk=password.pk %}">{{ password.website }}</a></li>#}
+{#                {% endfor %}#}
+{#            </ul>#}
+{#        </p>#}
+{#    {% endif %}#}
+{##}
+{#    {% if project.subscription_set.count or project.password_set.count %}#}
+{#        <p>This action will delete all subscriptions and passwords connected to this project!#}
+{#            <br><strong>This action is irreversible.</strong></p>#}
+{#    {% endif %}#}
+{#{% endblock content %}#}

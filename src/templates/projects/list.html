@@ -10,32 +10,27 @@
 {% endblock content-title %}
 
 {% block content %}
-    <table>
-        <tr>
-            <th style="padding-right: 75px">Project</th>
-            <th style="padding-right: 75px">Customer</th>
-            <th style="padding-right: 75px">Subscriptions</th>
-            <th>Passwords</th>
-        </tr>
+    {% if project_list %}
+        <div class="row mt-2 custom-link">
+            <div class="col-md-3"><strong>Project</strong></div>
+            <div class="col-md-3"><strong>Customer</strong></div>
+            <div class="col-md-2 text-center"><strong>Subscriptions</strong></div>
+            <div class="col-md-2 text-center"><strong>Passwords</strong></div>
+        </div>
         {% for project in object_list %}
-            <tr>
-                <td><a href="{% url 'projects:detail' pk=project.pk %}">{{ project.name }}</a></td>
-                <td><a href="{% url 'customers:detail' pk=project.customer.pk %}">{{ project.customer.name }}</a></td>
-                <td>
-                    {% if project.subscription_set.all.count > 0 %}
-                        <a href="{% url 'subscriptions:list_project' pk=project.pk %}">{{ project.subscription_set.all.count }}</a>
-                    {% else %}
-                        {{ project.subscription_set.all.count }}
-                    {% endif %}
-                </td>
-                <td>
-                    {% if project.password_set.all.count > 0 %}
-                        <a href="{% url 'passwords:list_project' pk=project.pk %}">{{ project.password_set.all.count }}</a>
-                    {% else %}
-                        {{ project.password_set.all.count }}
-                    {% endif %}
-                </td>
-            </tr>
+            <div class="row mt-2 custom-link">
+                <div class="col-md-3"><a href="{% url 'projects:detail' pk=project.pk %}">{{ project }}</a></div>
+                <div class="col-md-3">{{ project.customer }}</div>
+                <div class="col-md-2 text-center"><span class="badge">{{ project.subscription_set.count }}</span></div>
+                <div class="col-md-2 text-center"><span class="badge">{{ project.password_set.count }}</span></div>
+            </div>
         {% endfor %}
-    </table>
+    {% else %}
+        <div class="row mt-2">
+            <div class="col-md-4">There are no projects.</div>
+        </div>
+        <div class="row mt-2 custom-link">
+            <div class="col-md-4"><a href="{% url 'projects:create' %}">Add Project</a></div>
+        </div>
+    {% endif %}
 {% endblock content %}
