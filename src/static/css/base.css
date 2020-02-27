@@ -16,7 +16,7 @@
 }
 
 .container-body {
-    border-radius: 0.5rem;
+    border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
     background-color: #e5e5e5;
 }
 
@@ -28,6 +28,7 @@
 }
 
 .content-bottom {
+    border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
     padding: 1em;
     background-color: #e5e5e5;
 }
