@@ -4,6 +4,9 @@ from .models import Subscription
 
 
 class SubscriptionForm(forms.ModelForm):
+    date_created = forms.DateField(widget=forms.widgets.DateInput(attrs={'type': 'date'}))
+    date_renewal = forms.DateField(widget=forms.widgets.DateInput(attrs={'type': 'date'}))
+
     class Meta:
         model = Subscription
         fields = '__all__'
@@ -18,6 +21,9 @@ class SubscriptionForm(forms.ModelForm):
 
 
 class SubscriptionUpdateForm(forms.ModelForm):
+    date_created = forms.DateField(widget=forms.widgets.DateInput(attrs={'type': 'date'}))
+    date_renewal = forms.DateField(widget=forms.widgets.DateInput(attrs={'type': 'date'}))
+
     class Meta:
         model = Subscription
         fields = ['date_created', 'date_renewal', 'notes']

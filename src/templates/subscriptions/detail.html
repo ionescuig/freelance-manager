@@ -29,14 +29,14 @@
             <div class="row mb-2">
                 <div class="col-md-4"><strong>Created Date</strong></div>
                 <div class="col-md-8">
-                    {{ subscription.date_created|default:"-" }}
+                    {{ subscription.date_created|date:"d.m.Y"|default:"-" }}
                 </div>
             </div>
 
             <div class="row mb-4">
                 <div class="col-md-4"><strong>Renewal Date</strong></div>
                 <div class="col-md-8">
-                    {{ subscription.date_renewal|default:"-" }}
+                    {{ subscription.date_renewal|date:"d.m.Y"|default:"-" }}
                 </div>
             </div>
 

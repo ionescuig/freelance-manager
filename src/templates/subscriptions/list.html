@@ -14,8 +14,8 @@
         <div class="row mb-2 mt-2">
             <div class="col-md-2"><strong>Project</strong></div>
             <div class="col-md-2"><strong>Website</strong></div>
-            <div class="col-md-2"><strong>Created Date</strong></div>
-            <div class="col-md-2"><strong>Renewal Date</strong></div>
+            <div class="col-md-2 text-center"><strong>Created Date</strong></div>
+            <div class="col-md-2 text-center"><strong>Renewal Date</strong></div>
         </div>
         {% for subscription in object_list %}
             <div class="row mb-1">
@@ -25,11 +25,11 @@
                 <div class="col-md-2 custom-link">
                     {{ subscription.website.name }}
                 </div>
-                <div class="col-md-2">
-                    {{ subscription.date_created }}
+                <div class="col-md-2 text-center">
+                    {{ subscription.date_created|date:"d.m.Y"|default:"-" }}
                 </div>
-                <div class="col-md-2">
-                    {{ subscription.date_renewal }}
+                <div class="col-md-2 text-center">
+                    {{ subscription.date_renewal|date:"d.m.Y"|default:"-" }}
                 </div>
                 <div class="col-md-4">
                     <a class="btn btn-sm btn-success" href="{% url 'subscriptions:update' pk=subscription.pk %}">Edit</a>
