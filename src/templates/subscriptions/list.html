@@ -28,8 +28,11 @@
                 <div class="col-md-2 text-center">
                     {{ subscription.date_created|date:"d.m.Y"|default:"-" }}
                 </div>
-                {% if subscription.date_renewal < subscription_to_renew %}
+
+                {% if subscription.date_renewal < today %}
                     <div class="col-md-2 text-center text-danger">
+                {% elif subscription.date_renewal < date_in_one_month %}
+                    <div class="col-md-2 text-center" style="color: #d2be00">
                 {% else %}
                     <div class="col-md-2 text-center">
                 {% endif %}
@@ -49,6 +52,15 @@
             <div class="col-md-4"><a href="{% url 'subscription:create' %}">Add Subscription</a></div>
         </div>
     {% endif %}
+
+    <div class="mt-2">
+        <small>
+            <strong>Colors:</strong>
+            <span>active</span> /
+            <span style="color: #d2be00">expires in less than one month</span> /
+            <span class="text-danger">expired</span>
+        </small>
+    </div>
 {% endblock content %}
 
 {% block content-bottom %}
