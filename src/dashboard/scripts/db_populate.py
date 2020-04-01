@@ -11,6 +11,7 @@ def populate_db():
     django.setup()
 
     # main code
+    from datetime import date, timedelta
     from customers.models import Customer
     from passwords.models import Password
     from projects.models import Project
@@ -33,13 +34,52 @@ def populate_db():
     website2 = Website.objects.get_or_create(name='GitHub', url='https://www.github.com')
     website3 = Website.objects.get_or_create(name='Heroku', url='https://www.heroku.com')
 
-    subscription1 = Subscription.objects.get_or_create(project=Project.objects.get(name='Facebook'), website=Website.objects.get(name='GitHub'), date_created='2020-01-10', date_renewal='2021-01-10')
-    subscription2 = Subscription.objects.get_or_create(project=Project.objects.get(name='Facebook'), website=Website.objects.get(name='Heroku'), date_created='2020-01-15', date_renewal='2021-01-15')
-    subscription3 = Subscription.objects.get_or_create(project=Project.objects.get(name='Instagram'), website=Website.objects.get(name='GitHub'), date_created='2019-02-10', date_renewal='2020-02-10')
-    subscription4 = Subscription.objects.get_or_create(project=Project.objects.get(name='Instagram'), website=Website.objects.get(name='Heroku'), date_created='2019-02-15', date_renewal='2020-02-15')
-    subscription5 = Subscription.objects.get_or_create(project=Project.objects.get(name='Whatsapp'), website=Website.objects.get(name='GitHub'), date_created='2019-02-20', date_renewal='2020-02-20')
-    subscription6 = Subscription.objects.get_or_create(project=Project.objects.get(name='Whatsapp'), website=Website.objects.get(name='Heroku'), date_created='2020-01-10', date_renewal='2021-01-10')
-    subscription7 = Subscription.objects.get_or_create(project=Project.objects.get(name='Zoopla'), website=Website.objects.get(name='GitHub'), date_created='2019-02-22', date_renewal='2020-02-22')
+    today = date.today()
+    subscription1 = Subscription.objects.get_or_create(
+        project=Project.objects.get(name='Facebook'),
+        website=Website.objects.get(name='GitHub'),
+        date_created=today - timedelta(days=365) + timedelta(days=15),
+        date_renewal=today + timedelta(days=15))
+    subscription2 = Subscription.objects.get_or_create(
+        project=Project.objects.get(name='Facebook'),
+        website=Website.objects.get(name='Heroku'),
+        date_created=today - timedelta(days=365) + timedelta(days=80),
+        date_renewal=today + timedelta(days=80))
+    subscription3 = Subscription.objects.get_or_create(
+        project=Project.objects.get(name='Instagram'),
+        website=Website.objects.get(name='GitHub'),
+        date_created=today - timedelta(days=365) + timedelta(days=-43),
+        date_renewal=today + timedelta(days=-43))
+    subscription4 = Subscription.objects.get_or_create(
+        project=Project.objects.get(name='Instagram'),
+        website=Website.objects.get(name='Heroku'),
+        date_created=today - timedelta(days=365) + timedelta(days=52),
+        date_renewal=today + timedelta(days=52))
+    subscription5 = Subscription.objects.get_or_create(
+        project=Project.objects.get(name='Whatsapp'),
+        website=Website.objects.get(name='Digital Ocean'),
+        date_created=today - timedelta(days=365) + timedelta(days=-22),
+        date_renewal=today + timedelta(days=-22))
+    subscription6 = Subscription.objects.get_or_create(
+        project=Project.objects.get(name='Zoopla'),
+        website=Website.objects.get(name='GitHub'),
+        date_created=today - timedelta(days=365) + timedelta(days=72),
+        date_renewal=today + timedelta(days=72))
+    subscription7 = Subscription.objects.get_or_create(
+        project=Project.objects.get(name='Whatsapp'),
+        website=Website.objects.get(name='Heroku'),
+        date_created=today - timedelta(days=365) + timedelta(days=57),
+        date_renewal=today + timedelta(days=57))
+    subscription8 = Subscription.objects.get_or_create(
+        project=Project.objects.get(name='Zoopla'),
+        website=Website.objects.get(name='GitHub'),
+        date_created=today - timedelta(days=365) + timedelta(days=22),
+        date_renewal=today + timedelta(days=22))
+    subscription8 = Subscription.objects.get_or_create(
+        project=Project.objects.get(name='Whatsapp'),
+        website=Website.objects.get(name='GitHub'),
+        date_created=today - timedelta(days=365) + timedelta(days=11),
+        date_renewal=today + timedelta(days=11))
 
     password1 = Password.objects.get_or_create(project=Project.objects.get(name='Facebook'), website=Website.objects.get(name='GitHub'), username='user', password='password')
     password2 = Password.objects.get_or_create(project=Project.objects.get(name='Facebook'), website=Website.objects.get(name='Heroku'), username='user', password='password')
