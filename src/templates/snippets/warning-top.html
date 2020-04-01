@@ -1,17 +1,28 @@
 {% if object_list.count > 0 %}
 <div class="warning-top">
     <div class="warning-top text-center">
-        <strong style="color: grey">Warning: </strong>
+            <strong class="text-danger">Warning: </strong>You have
 
-        You have <strong style="color: grey">{{ object_list.count }}</strong>
-        {% if object_list.count > 1 %}
-            subscriptions
-        {% else %}
-            subscription
-        {% endif %}
-        about to expire |
+            {% if subscriptions_expired %}
+                <strong class="text-danger">{{ subscriptions_expired.count }}</strong> expired
+                {% if subscriptions_expired.count > 1 %}
+                    subscriptions
+                {% else %}
+                    subscription
+                {% endif %}
+            {% endif %}
 
-        <a href="{% url 'subscriptions:list_expire' %}">Renew subscriptions</a>
+            {% if subscriptions_in_one_month %}
+                {% if subscriptions_expired %} | {% endif %}
+                <strong class="text-danger">{{ subscriptions_in_one_month.count }}</strong>
+                {% if subscriptions_in_one_month.count > 1 %}
+                    subscriptions
+                {% else %}
+                    subscription
+                {% endif %}
+                about to expire
+            {% endif %}
+
+        <br><a class="text-danger" href="{% url 'subscriptions:list_expire' %}">Renew subscriptions</a>
     </div>
-</div>
 {% endif %}

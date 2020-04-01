@@ -18,16 +18,26 @@ class HomePageView(LoginRequiredMixin, ListView):
         return Subscription.objects.filter(date_renewal__lte=warning)
 
     def get_context_data(self, **kwargs):
+        today = date.today()
+        in_one_month = date.today() + timedelta(days=30)
         context = super(HomePageView, self).get_context_data()
         customers = Customer.objects.all()
         projects = Project.objects.all()
-        subscriptions = Subscription.objects.all()
+        subscriptions_all = Subscription.objects.all()
+        subscriptions_in_one_month = Subscription.objects.filter(
+            date_renewal__lte=in_one_month).filter(date_renewal__gt=today)
+        subscriptions_expired = Subscription.objects.filter(date_renewal__lte=today)
         passwords = Password.objects.all()
         websites = Website.objects.all()
-        context['customers'] = customers
-        context['projects'] = projects
-        context['subscriptions'] = subscriptions
-        context['passwords'] = passwords
-        context['websites'] = websites
-        context['linkActive'] = 'Home'
+        context.update({
+            'linkActive': 'Home',
+            'customers': customers,
+            'projects': projects,
+            'subscriptions': subscriptions_all,
+            'subscriptions_in_one_month': subscriptions_in_one_month,
+            'subscriptions_expired': subscriptions_expired,
+            'passwords': passwords,
+            'websites': websites,
+
+        })
         return context

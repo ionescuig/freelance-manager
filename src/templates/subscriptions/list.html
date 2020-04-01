@@ -44,23 +44,23 @@
                 </div>
             </div>
         {% endfor %}
+
+        <div class="mt-2">
+            <small>
+                <strong>Renewal:</strong>
+                <span>active</span> /
+                <span style="color: #d2be00">expires in less than one month</span> /
+                <span class="text-danger">expired</span>
+            </small>
+        </div>
     {% else %}
         <div class="row mt-2">
             <div class="col-md-4">There are no subscriptions.</div>
         </div>
         <div class="row mt-2 custom-link">
-            <div class="col-md-4"><a href="{% url 'subscription:create' %}">Add Subscription</a></div>
+            <div class="col-md-4"><a href="{% url 'subscriptions:create' %}">Add Subscription</a></div>
         </div>
     {% endif %}
-
-    <div class="mt-2">
-        <small>
-            <strong>Colors:</strong>
-            <span>active</span> /
-            <span style="color: #d2be00">expires in less than one month</span> /
-            <span class="text-danger">expired</span>
-        </small>
-    </div>
 {% endblock content %}
 
 {% block content-bottom %}
