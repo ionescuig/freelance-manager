@@ -12,3 +12,9 @@ def repopulate_db():
     clean_db()
     populate_db()
     logger.info(">>> Database repopulated")
+
+
+@shared_task()
+def send_email_with_subscriptions_about_to_expire():
+    # to be set
+    logger.info(">>> Task not set yet.")

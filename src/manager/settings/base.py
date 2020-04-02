@@ -132,11 +132,16 @@ LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'landing'
 
 # Celery settings
+from datetime import timedelta
 from celery.schedules import crontab
 CELERY_TIMEZONE = 'Europe/London'
 CELERY_BEAT_SCHEDULE = {
     'populate-db': {
         'task': 'dashboard.tasks.repopulate_db',
         'schedule': crontab(hour=[7, 13, 17], minute=[0, 0, 0],  day_of_week='*'),
+    },
+    'send_email_with_subscriptions_about_to_expire': {
+        'task': 'dashboard.tasks.send_email_with_subscriptions_about_to_expire',
+        'schedule': crontab(hour=[6], minute=[30],  day_of_week='*'),
     },
 }
