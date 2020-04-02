@@ -21,13 +21,5 @@ STATICFILES_DIRS = (
 )
 
 # Celery settings
-from celery.schedules import crontab
 BROKER_POOL_LIMIT = 3
 CELERY_BROKER_URL = 'amqp://sjyqatxw:3WTXHzqGWgctcNNEbFCki21X-3FXt91_@stingray.rmq.cloudamqp.com/sjyqatxw'
-CELERY_TIMEZONE = 'Europe/London'
-CELERY_BEAT_SCHEDULE = {
-    'populate-db': {
-        'task': 'dashboard.tasks.repopulate_db',
-        'schedule': crontab(hour=[7, 13, 17], minute=[0, 0, 0],  day_of_week='*'),
-    },
-}

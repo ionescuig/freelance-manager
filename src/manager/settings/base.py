@@ -130,3 +130,13 @@ STATICFILES_DIRS = [STATIC_DIR, ]
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'landing'
+
+# Celery settings
+from celery.schedules import crontab
+CELERY_TIMEZONE = 'Europe/London'
+CELERY_BEAT_SCHEDULE = {
+    'populate-db': {
+        'task': 'dashboard.tasks.repopulate_db',
+        'schedule': crontab(hour=[7, 13, 17], minute=[0, 0, 0],  day_of_week='*'),
+    },
+}
