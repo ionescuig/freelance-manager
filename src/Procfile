@@ -1,2 +1,2 @@
 web: gunicorn manager.wsgi
-worker: celery -A manager worker -B -l INFO
+worker: celery -A manager worker --beat --loglevel=info
