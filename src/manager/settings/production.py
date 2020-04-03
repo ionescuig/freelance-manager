@@ -16,9 +16,9 @@ DATABASES['default']['CONN_MAX_AGE'] = 500
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
+# STATICFILES_DIRS = (
+#     os.path.join(BASE_DIR, 'static'),
+# )
 
 # Celery settings
 BROKER_POOL_LIMIT = 3
