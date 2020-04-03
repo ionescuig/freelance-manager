@@ -1,12 +1,16 @@
 from datetime import date
+from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError
 from django.core.validators import RegexValidator
 from django.db import models
 from django.urls import reverse
 
+User = get_user_model()
+
 
 class Customer(models.Model):
     # main data
+    user    = models.ForeignKey(User, related_name='customers', on_delete=models.CASCADE)
     name    = models.CharField(max_length=35)
     email   = models.EmailField()
     phone   = models.CharField(

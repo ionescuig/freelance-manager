@@ -1,8 +1,12 @@
+from django.contrib.auth import get_user_model
 from django.db import models
 from django.urls import reverse
 
+User = get_user_model()
+
 
 class Website(models.Model):
+    user = models.ForeignKey(User, related_name='websites', on_delete=models.CASCADE)
     name = models.CharField(max_length=25, unique=True)
     url  = models.URLField(unique=True)
 

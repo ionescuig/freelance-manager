@@ -1,4 +1,5 @@
 from datetime import date, timedelta
+from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError
 from django.db import models
 from django.urls import reverse
@@ -6,12 +7,15 @@ from django.urls import reverse
 from projects.models import Project
 from websites.models import Website
 
+User = get_user_model()
+
 
 def date_renewal_default():
     return date.today()+timedelta(days=365)
 
 
 class Subscription(models.Model):
+    user         = models.ForeignKey(User, related_name='subscriptions', on_delete=models.CASCADE)
     project      = models.ForeignKey(Project, on_delete=models.CASCADE)
     website      = models.ForeignKey(Website, on_delete=models.CASCADE)
 
