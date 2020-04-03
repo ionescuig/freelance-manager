@@ -132,7 +132,6 @@ LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'landing'
 
 # Celery settings
-from datetime import timedelta
 from celery.schedules import crontab
 CELERY_TIMEZONE = 'Europe/London'
 CELERY_BEAT_SCHEDULE = {
