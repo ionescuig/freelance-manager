@@ -15,6 +15,11 @@ class SubscriptionCreateView(LoginRequiredMixin, CreateView):
     template_name = 'subscriptions/create.html'
     form_class = SubscriptionForm
 
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        form.save()
+        return super(SubscriptionCreateView, self).form_valid(form)
+
     def get_context_data(self, **kwargs):
         context = super(SubscriptionCreateView, self).get_context_data()
         context['linkActive'] = 'Subscriptions'

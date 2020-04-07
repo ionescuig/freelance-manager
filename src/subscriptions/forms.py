@@ -9,7 +9,8 @@ class SubscriptionForm(forms.ModelForm):
 
     class Meta:
         model = Subscription
-        fields = '__all__'
+
+        fields = ["project", "website", "date_created", "date_renewal", "notify_by_email", "notes"]
         widgets = {
             'notes': forms.Textarea(attrs={'rows': 8}),
         }

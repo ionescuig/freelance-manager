@@ -6,7 +6,7 @@ from.models import Password
 class PasswordForm(forms.ModelForm):
     class Meta:
         model = Password
-        fields = "__all__"
+        exclude = ["user"]
         widgets = {
             'notes': forms.Textarea(attrs={'rows': 7}),
         }

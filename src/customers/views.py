@@ -11,6 +11,11 @@ class CustomerCreateView(LoginRequiredMixin, CreateView):
     template_name = 'customers/create.html'
     form_class = CustomerForm
 
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        form.save()
+        return super(CustomerCreateView, self).form_valid(form)
+
     def get_context_data(self, **kwargs):
         context = super(CustomerCreateView, self).get_context_data()
         context['linkActive'] = 'Customers'

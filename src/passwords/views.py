@@ -11,6 +11,11 @@ class PasswordCreateView(LoginRequiredMixin, CreateView):
     form_class = PasswordForm
     success_url = reverse_lazy('passwords:list')
 
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        form.save()
+        return super(PasswordCreateView, self).form_valid(form)
+
     def get_context_data(self, **kwargs):
         context = super(PasswordCreateView, self).get_context_data()
         context['linkActive'] = 'Passwords'

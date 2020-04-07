@@ -10,6 +10,11 @@ class ProjectCreateView(LoginRequiredMixin, CreateView):
     template_name = 'projects/create.html'
     form_class = ProjectForm
 
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        form.save()
+        return super(ProjectCreateView, self).form_valid(form)
+
     def get_context_data(self, **kwargs):
         context = super(ProjectCreateView, self).get_context_data()
         context['linkActive'] = 'Projects'

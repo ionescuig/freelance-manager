@@ -11,6 +11,11 @@ class WebsiteCreateView(LoginRequiredMixin, CreateView):
     form_class = WebsiteForm
     success_url = reverse_lazy('websites:list')
 
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        form.save()
+        return super(WebsiteCreateView, self).form_valid(form)
+
     def get_context_data(self, **kwargs):
         context = super(WebsiteCreateView, self).get_context_data()
         context['linkActive'] = 'Websites'

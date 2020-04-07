@@ -8,7 +8,7 @@ class WebsiteForm(forms.ModelForm):
 
     class Meta:
         model = Website
-        fields = "__all__"
+        fields = ["name", "url"]
 
     def __init__(self, *args, **kwargs):
         super(WebsiteForm, self).__init__(*args, **kwargs)
