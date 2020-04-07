@@ -11,7 +11,7 @@ class SubscriptionForm(forms.ModelForm):
         model = Subscription
         fields = '__all__'
         widgets = {
-            'notes': forms.Textarea(attrs={'rows': 7}),
+            'notes': forms.Textarea(attrs={'rows': 8}),
         }
 
     def __init__(self, *args, **kwargs):
@@ -26,9 +26,9 @@ class SubscriptionUpdateForm(forms.ModelForm):
 
     class Meta:
         model = Subscription
-        fields = ['date_created', 'date_renewal', 'notes']
+        fields = ['date_created', 'date_renewal', 'notify_by_email', 'notes']
         widgets = {
-            'notes': forms.Textarea(attrs={'rows': 7}),
+            'notes': forms.Textarea(attrs={'rows': 8}),
         }
 
     def __init__(self, *args, **kwargs):

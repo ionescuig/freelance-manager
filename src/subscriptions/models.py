@@ -21,6 +21,7 @@ class Subscription(models.Model):
 
     date_created = models.DateField(blank=True, null=True)
     date_renewal = models.DateField(blank=True, null=True, default=date_renewal_default)
+    notify_by_email = models.BooleanField(default=True)
 
     notes        = models.TextField(blank=True, null=True)
 

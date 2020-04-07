@@ -15,8 +15,8 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="row mb-2">
-                    <div class="col-md-4"><strong>Project</strong></div>
-                    <div class="col-md-8">
+                    <div class="col-md-5"><strong>Project</strong></div>
+                    <div class="col-md-7">
                         {{ form.project }}
                         {% if form.project.errors %}
                             <small class="text-danger ml-2">{{ form.project.errors|striptags }}</small>
@@ -25,8 +25,8 @@
                 </div>
 
                 <div class="row mb-3">
-                    <div class="col-md-4"><strong>Website</strong></div>
-                    <div class="col-md-8">
+                    <div class="col-md-5"><strong>Website</strong></div>
+                    <div class="col-md-7">
                         {{ form.website }}
                         {% if form.website.errors %}
                             <small class="text-danger ml-2">{{ form.website.errors|striptags }}</small>
@@ -35,8 +35,8 @@
                 </div>
 
                 <div class="row mb-2">
-                    <div class="col-md-4"><strong>Created Date</strong></div>
-                    <div class="col-md-8">
+                    <div class="col-md-5"><strong>Created Date</strong></div>
+                    <div class="col-md-7">
                         {{ form.date_created }}
                         {% if form.date_created.errors %}
                             <small class="text-danger ml-2">{{ form.date_created.errors|striptags }}</small>
@@ -45,11 +45,21 @@
                 </div>
 
                 <div class="row mb-2">
-                    <div class="col-md-4"><strong>Renewal Date</strong></div>
-                    <div class="col-md-8">
+                    <div class="col-md-5"><strong>Renewal Date</strong></div>
+                    <div class="col-md-7">
                         {{ form.date_renewal }}
                         {% if form.date_renewal.errors %}
                             <small class="text-danger ml-2">{{ form.date_renewal.errors|striptags }}</small>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="row mb-2">
+                    <div class="col-md-5"><strong>Notify me by email:</strong></div>
+                    <div class="col-md-1">
+                        {{ form.notify_by_email }}
+                        {% if form.notify_by_email.errors %}
+                            <small class="text-danger ml-2">{{ form.notify_by_email.errors|striptags }}</small>
                         {% endif %}
                     </div>
                 </div>

@@ -17,4 +17,7 @@ def repopulate_db():
 @shared_task()
 def send_email_with_subscriptions_about_to_expire():
     # to be set
-    logger.info(">>> Task not set yet.")
+    from datetime import datetime
+    my_time = datetime.now().strftime("[%Y-%m-%d][%H:%M:%S]")
+    message = my_time + "Task not set yet."
+    logger.info(message)
