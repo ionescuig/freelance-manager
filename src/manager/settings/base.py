@@ -143,3 +143,7 @@ CELERY_BEAT_SCHEDULE = {
         'schedule': crontab(hour=[6], minute=[30],  day_of_week='*'),
     },
 }
+
+# SendGrid mail settings
+SENDGRID_SANDBOX_MODE_IN_DEBUG=False
+EMAIL_BACKEND = "sendgrid_backend.SendgridBackend"
