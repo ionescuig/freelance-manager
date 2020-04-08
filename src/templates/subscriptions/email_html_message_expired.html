@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Freelance Manager</title>
+</head>
+
+<body>
+    <h3>Subscriptions about to expire in one month</h3>
+
+    Subscriptions that will expire next month:
+    <ul>
+        {% for subscription in subscriptions %}
+            <li><a href="{% url 'subscriptions:detail' %}">{{ subscription }}</a></li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'subscriptions:list_expire' %}">Review subscriptions</a>
+    <br><br>
+
+    {% if subscriptions_expired %}
+        You have {{ subscriptions_expired.count }} expired subscriptions.
+        <br>
+        <a href="{% url 'subscriptions:list_expire' %}">Review subscriptions</a>
+        <a href="https://www.gabriel-ionescu.com/articles">Blog</a>
+    {% endif %}
+</body>
+</html>

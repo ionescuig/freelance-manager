@@ -18,7 +18,10 @@ def repopulate_db():
 
 
 @shared_task()
-def send_email_with_subscriptions_about_to_expire():
+def send_mail_with_subscriptions_expired_and_about_to_expire():
     # to be set
     message = current_time + "Task not set yet."
     logger.info(message)
+
+    from subscriptions.scripts import send_mail_with_subscriptions_expired_and_about_to_expire as my_task
+    my_task()
