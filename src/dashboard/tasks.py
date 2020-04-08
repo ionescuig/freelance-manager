@@ -1,8 +1,9 @@
 from celery import shared_task
 from celery.utils.log import get_task_logger
+from datetime import datetime
 
 logger = get_task_logger(__name__)
-
+current_time = datetime.now().strftime("[%Y-%m-%d][%H:%M:%S]")
 
 @shared_task()
 def repopulate_db():
@@ -11,13 +12,13 @@ def repopulate_db():
 
     clean_db()
     populate_db()
-    logger.info(">>> Database repopulated")
+
+    message = current_time + "Database repopulated."
+    logger.info(message)
 
 
 @shared_task()
 def send_email_with_subscriptions_about_to_expire():
     # to be set
-    from datetime import datetime
-    my_time = datetime.now().strftime("[%Y-%m-%d][%H:%M:%S]")
-    message = my_time + "Task not set yet."
+    message = current_time + "Task not set yet."
     logger.info(message)
