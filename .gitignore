@@ -1,3 +1,4 @@
+# local settings
 src/manager/settings/local.py
 local.py
 local.*
@@ -5,12 +6,23 @@ local.*
 db.sqlite3
 env/
 
-__pycache__/
+
+# editors settings
 .idea/
 .vscode/
 
+
+# jupyter notebooks
 jupyter_notebooks/
 
+
+# celery beat schedule file
+celerybeat-schedule
+
+
+# python files
+__pycache__/
 *.pyc
 *.key
 *.py[cod]
+
