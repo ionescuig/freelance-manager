@@ -41,7 +41,8 @@ date_today = date.today()
 date_in_one_month = date.today() + timedelta(days=30)
 
 from_email = settings.DEFAULT_FROM_EMAIL
-recipient_list = [settings.DEFAULT_TO_EMAIL]
+# recipient_list = [settings.DEFAULT_TO_EMAIL]
+FM_WEBSITE = settings.FM_WEBSITE
 
 users = User.objects.exclude(email__isnull=True).exclude(email__exact='')
 
@@ -58,11 +59,13 @@ def send_mail_with_subscriptions_that_will_expire_in_exactly_one_month():
 def send_mail_with_subscriptions_expired_and_about_to_expire():
     """ should run weekly"""
 
-    subject = 'Freelance Manager: Subscriptions that will expire in the next month'
-    message = 'testing'
+    subject = 'Freelance Manager: Weekly subscriptions status'
+    message = 'weekly mail'
 
-    template_name = 'subscriptions/email_html_message_expired.html'
+    template_name = 'subscriptions/email_weekly_status.html'
     for user in users:
+        recipient_list = [user.email]
+
         subscriptions_expired = user.subscriptions.filter(
             notify_by_email=True).filter(
             date_renewal__lte=date_today)
@@ -73,7 +76,7 @@ def send_mail_with_subscriptions_expired_and_about_to_expire():
 
         context = {
             'name': user.username,
-            'email': user.email,
+            'website': FM_WEBSITE,
             'subscriptions_expired': subscriptions_expired,
             'subscriptions_in_one_month': subscriptions_in_one_month,
         }

@@ -138,9 +138,9 @@ CELERY_BEAT_SCHEDULE = {
         'task': 'dashboard.tasks.repopulate_db',
         'schedule': crontab(hour=[7, 13, 17], minute=[0, 0, 0],  day_of_week='*'),
     },
-    'send_email_with_subscriptions_about_to_expire': {
-        'task': 'dashboard.tasks.send_email_with_subscriptions_about_to_expire',
-        'schedule': crontab(hour=[6], minute=[30],  day_of_week='*'),
+    'send_mail_with_subscriptions_expired_and_about_to_expire': {
+        'task': 'dashboard.tasks.send_mail_with_subscriptions_expired_and_about_to_expire',
+        'schedule': crontab(hour=[7], minute=[30],  day_of_week='1'),
     },
 }
 

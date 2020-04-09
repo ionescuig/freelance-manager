@@ -28,3 +28,6 @@ CELERY_BROKER_URL = 'amqp://sjyqatxw:3WTXHzqGWgctcNNEbFCki21X-3FXt91_@stingray.r
 SENDGRID_API_KEY = os.environ.get('SENDGRID_API_KEY')
 DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL')
 DEFAULT_TO_EMAIL = os.environ.get('DEFAULT_TO_EMAIL')
+
+# Freelance Manager website
+FM_WEBSITE = "https://freelancemanager.herokuapp.com"

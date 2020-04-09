@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Freelance Manager</title>
+</head>
+
+<body>
+    <h3>Hello {{ name }},</h3>
+    <p>Your weekly subscriptions status:</p>
+
+    <div style="margin: 20px 0 0 20px">
+        {% if subscriptions_in_one_month or subscriptions_expired %}
+            {% if subscriptions_in_one_month %}
+                <p><strong>{{ subscriptions_in_one_month.count }}</strong> subscriptions will expire in the next month:</p>
+                <ul>
+                    {% for subscription in subscriptions_in_one_month %}
+                        <li><a style="text-decoration:none"
+                               href="{{ website }}{% url 'subscriptions:detail' pk=subscription.pk %}">
+                            {{ subscription }}</a></li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            {% if subscriptions_expired %}
+                <p>You have <strong>{{ subscriptions_expired.count }}</strong> expired subscriptions:</p>
+                <ul>
+                    {% for subscription in subscriptions_expired %}
+                        <li><a style="text-decoration:none"
+                               href="{{ website }}{% url 'subscriptions:detail' pk=subscription.pk %}">
+                            {{ subscription }}</a></li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            <br>
+            <a href="{{ website }}{% url 'subscriptions:list_expire' %}">Review subscriptions</a>
+        {% else %}
+            <p><strong>All your subscriptions are up-to-date.</strong></p>
+        {% endif %}
+    </div>
+
+    {% include 'snippets/footer-email.html' %}
+</body>
+</html>
