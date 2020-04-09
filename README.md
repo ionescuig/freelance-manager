@@ -1,9 +1,10 @@
 # Freelance Manager
 **Made for freelance web developers - helps with keeping track of customers, projects, subscriptions and passwords**
-[Heroku](https://freelancemanager.herokuapp.com)
+
 <br><br>
 _work in progress_
-<small><br>_for feedback, sugestions or anything else please contact me at ionescuig@yahoo.com_</small>
+<br>Check it on [Heroku](https://freelancemanager.herokuapp.com)
+<br>_for feedback, sugestions or anything else please contact me at ionescuig@yahoo.com_
 ___
 
 Apps:
