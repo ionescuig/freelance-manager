@@ -4,7 +4,7 @@
 <br>
 
 Check it on [Heroku](https://freelancemanager.herokuapp.com)
-<br>_for feedback, sugestions or anything else please contact me at ionescuig@yahoo.com_
+<br>_for feedback, suggestions or anything else please contact me at ionescuig@yahoo.com_
 
 <br>
 
