@@ -1,5 +1,5 @@
 # Freelance Manager
-**Made freelance web developers - helps with keeping track of customers, projects, subscriptions and passwords**
+**Made for freelance web developers - helps with keeping track of customers, projects, subscriptions and passwords**
 [Heroku](https://freelancemanager.herokuapp.com)
 <br><br>
 _work in progress_
