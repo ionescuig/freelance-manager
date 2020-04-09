@@ -1,6 +1,6 @@
 # Freelance Manager
 ##### Helps freelance web developers with keeping track of customers, projects, subscriptions and passwords
-[Heroku](https://freelancemanager.herokuapp.com)
+[Heroku](https://freelancemanager.herokuapp.com) _(not sending email for now - contacted SendGrid)_
 <br><br>
 _work in progress_
 ___
