@@ -1,8 +1,9 @@
 # Freelance Manager
-##### Helps freelance web developers with keeping track of customers, projects, subscriptions and passwords
-[Heroku](https://freelancemanager.herokuapp.com) _(not sending email for now - contacted SendGrid)_
+**Made freelance web developers - helps with keeping track of customers, projects, subscriptions and passwords**
+[Heroku](https://freelancemanager.herokuapp.com)
 <br><br>
 _work in progress_
+<small><br>_for feedback, sugestions or anything else please contact me at ionescuig@yahoo.com_</small>
 ___
 
 Apps:
@@ -20,5 +21,8 @@ Apps:
 
 Next:
 - send email when a subscription is about to expire (1 month, 1 week, 1 day)
+    - not sending email for now - contacted SendGrid
 - contact form/template
-- frontend
+- tests
+- multiuser access
+- frontend using React
