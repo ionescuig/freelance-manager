@@ -136,7 +136,7 @@ CELERY_TIMEZONE = 'Europe/London'
 CELERY_BEAT_SCHEDULE = {
     'populate-db': {
         'task': 'dashboard.tasks.repopulate_db',
-        'schedule': crontab(hour=[7, 13, 17], minute=[0, 0, 0],  day_of_week='*'),
+        'schedule': crontab(hour=[7, 17], minute=[0, 0],  day_of_week='*'),
     },
     'send_mail_with_subscriptions_expired_and_about_to_expire': {
         'task': 'dashboard.tasks.send_mail_with_subscriptions_expired_and_about_to_expire',
