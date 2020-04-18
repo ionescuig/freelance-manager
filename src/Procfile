@@ -1,2 +1,2 @@
 web: gunicorn manager.wsgi
-worker: celery -A manager worker --beat --loglevel=info
+worker: celery -A manager worker --beat --loglevel=info --without-gossip --without-mingle --without-heartbeat
