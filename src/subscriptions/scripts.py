@@ -8,8 +8,6 @@ from .models import Subscription
 
 
 """
-NOT WORKING YET
-
 daily:
     check for subscriptions that will expire in exactly 1 month
     send mail ONLY if there are subscriptions that will expire in exactly 1 month
@@ -91,6 +89,6 @@ def send_mail_with_subscriptions_expired_and_about_to_expire():
                 html_message=html_content
         )
 
-        from celery.utils.log import get_task_logger
-        logger = get_task_logger(__name__)
-        logger.info(recipient_list)
+    from celery.utils.log import get_task_logger
+    logger = get_task_logger(__name__)
+    logger.info('Mails = {}'.format(users.count()))

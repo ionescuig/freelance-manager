@@ -5,6 +5,7 @@ from datetime import datetime
 logger = get_task_logger(__name__)
 current_time = datetime.now().strftime("[%Y-%m-%d][%H:%M:%S]")
 
+
 @shared_task()
 def repopulate_db():
     from dashboard.scripts.db_clean import clean_db
