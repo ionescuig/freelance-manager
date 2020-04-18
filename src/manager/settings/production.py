@@ -22,7 +22,7 @@ STATIC_URL = '/static/'
 
 # Celery settings
 BROKER_POOL_LIMIT = 3
-CELERY_BROKER_URL = 'amqp://sjyqatxw:3WTXHzqGWgctcNNEbFCki21X-3FXt91_@stingray.rmq.cloudamqp.com/sjyqatxw'
+CELERY_BROKER_URL = os.environ.get('CLOUDAMQP_URL')
 
 # SendGrid mail settings
 SENDGRID_API_KEY = os.environ.get('SENDGRID_API_KEY')
@@ -31,3 +31,14 @@ DEFAULT_TO_EMAIL = os.environ.get('DEFAULT_TO_EMAIL')
 
 # Freelance Manager website
 FM_WEBSITE = "https://freelancemanager.herokuapp.com"
+
+# ===== TEMPORARY =====
+# Should be removed after fixing SendGrid problem
+from celery.schedules import crontab
+CELERY_BEAT_SCHEDULE = {
+    'populate-db': {
+        'task': 'dashboard.tasks.repopulate_db',
+        'schedule': crontab(hour=[7, 15, 23], minute=[0, 0, 0],  day_of_week='*'),
+    },
+}
+# =====================
