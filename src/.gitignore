@@ -2,6 +2,7 @@
 src/manager/settings/local.py
 local.py
 local.*
+requirements_local.txt
 
 db.sqlite3
 env/
